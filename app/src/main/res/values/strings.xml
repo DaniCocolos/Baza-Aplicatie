@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ForFoodiesByFoodies</string>
+    <string name="for_foodies_by_foodies">For Foodies By Foodies</string>
+    <string name="welcome">Welcome To Foodies</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="type_your_email"> Type your email address</string>
+    <string name="pass_hint">  ********</string>
+    <string name="register">Register</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="login">Login</string>
+    <string name="log_in_by">or log in using</string>
+</resources>

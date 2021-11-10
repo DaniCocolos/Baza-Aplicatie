@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fundal"
+    tools:context=".Views.RegisterUser">
+
+    <ImageView
+        android:id="@+id/im_logo2"
+        android:layout_width="115dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_splh" />
+
+    <TextView
+        android:id="@+id/et_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/nothing_you_could_do"
+        android:text="Welcome to Foodies"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/im_logo2" />
+
+    <EditText
+        android:id="@+id/et_fn"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="First Name"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_welcome" />
+
+    <EditText
+        android:id="@+id/et_sn"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="Last Name"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_fn" />
+
+    <EditText
+        android:id="@+id/et_user"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="User Name"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#FBFAFA"
+        android:textColorHint="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_sn" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Email"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_user" />
+
+    <EditText
+        android:id="@+id/et_em"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
+        android:ems="10"
+        android:hint="example@gmail.com"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/white"
+        android:textColorHint="@color/sobolan"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Password"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.255"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_em" />
+
+    <EditText
+        android:id="@+id/et_pw"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+        android:ems="10"
+        android:hint="   ********"
+        android:inputType="numberPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginRight="251dp"
+        android:text="Confirm password"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
+
+    <EditText
+        android:id="@+id/et_cpw"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+        android:ems="10"
+        android:hint="  *******"
+        android:inputType="numberPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/btn_register_user"
+        android:layout_width="215dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_corners"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <CheckBox
+        android:id="@+id/reg_cb"
+        android:layout_width="26dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cpw" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text=" Terms of Service and Privacy Policy"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/blue"
+        android:textColorHint="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cpw" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="I accept the "
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/et_cpw" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
