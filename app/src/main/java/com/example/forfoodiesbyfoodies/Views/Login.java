@@ -33,9 +33,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick( View v) {
-                // nu uita de facut legatura cu Register
-                //Toast.makeText(Login.this, "OK", Toast.LENGTH_SHORT).show();
-                //gonext();
+
             }
 
         };
@@ -58,10 +56,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.et_text_reg:
-                startActivity(new Intent(Login.this, RegisterUser.class));
-                break;
+        if (v.getId() == R.id.et_text_reg) {
+            startActivity(new Intent(Login.this, RegisterUser.class));
         }
     }
     public void gonext(){

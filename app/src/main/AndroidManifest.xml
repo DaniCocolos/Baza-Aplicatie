@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
+            android:name=".Views.TermAndConditions"
+            android:exported="false" />
+        <activity
             android:name=".Models.UserPage"
             android:exported="false" />
         <activity

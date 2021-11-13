@@ -10,4 +10,17 @@
     <string name="forgot_pass">Forgot password?</string>
     <string name="login">Login</string>
     <string name="log_in_by">or log in using</string>
+
+    <string name="email_hint">example@gmail.com</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="username">User Name</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="term_page">Terms and conditions</string>
+
+
+
+    <string name="terms_of_service_and_privacy_policy">Terms of Service and Privacy Policy</string>
+    <string name="i_accept_the">I accept the Terms of Service and Privacy Policy </string>
+    <string name="terms_and_conditions">Terms and conditions</string>
 </resources>
