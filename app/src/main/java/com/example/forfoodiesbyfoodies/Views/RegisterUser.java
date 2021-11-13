@@ -195,15 +195,15 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
                 } else if (username.isEmpty()){
                     editTextUserName.setText(Arrays.toString(email.split("@")));
-
+                    //reg_cb.requestFocus();  //reg_cb.requestFocus();
 
                 }else if ((password.compareTo(confirmPassword) == 0) && password.length() >= 4)
                 {
-
+                    //reg_cb.requestFocus();  //reg_cb.requestFocus();
                     if (!reg_cb.isChecked()) {
                         reg_cb.setError("You have to agree the Term and Conditions");
                         //reg_cb.requestFocus();
-
+                        //reg_cb.requestFocus();  //reg_cb.requestFocus();
                     }  else
 
                     {
