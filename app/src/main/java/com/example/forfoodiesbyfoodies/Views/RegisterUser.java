@@ -200,18 +200,12 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                 }else if ((password.compareTo(confirmPassword) == 0) && password.length() >= 4)
                 {
 
+                    if (!reg_cb.isChecked()) {
+                        reg_cb.setError("You have to agree the Term and Conditions");
+                        //reg_cb.requestFocus();
 
+                    }  else
 
-
-                }
-
-
-                else if (!reg_cb.isChecked()) {
-                    reg_cb.setError("You have to agree the Term and Conditions");
-                    //reg_cb.requestFocus();
-
-                }
-                else
                     {
                         User user = new User(firstName,lastName,email,password,username,usertype);
 
@@ -254,7 +248,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                         });
 
 
-                }
+                } }
         }});
 
 
