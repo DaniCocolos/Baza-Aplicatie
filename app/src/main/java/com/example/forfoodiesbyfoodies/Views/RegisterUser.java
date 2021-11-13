@@ -200,9 +200,9 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                 }else if ((password.compareTo(confirmPassword) == 0) && password.length() >= 4)
                 {
 
+//
 
-
-
+//////////////////////////////
                 }
 
 
