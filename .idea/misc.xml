@@ -3,11 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16203703703703703" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/button_term.xml" value="0.2703125" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/buttonshape.xml" value="0.2703125" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/checkbox_unchecked.xml" value="0.2703125" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/i_agree_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/ic_baseline_alternate_email_24.xml" value="0.16203703703703703" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.16203703703703703" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16203703703703703" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/ic_pass_lock.xml" value="0.16203703703703703" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/ok_ico.xml" value="0.2703125" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/drawable/rounded_corners.xml" value="0.16203703703703703" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout-v21/term_conditions.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/activity_register_user.xml" value="0.2" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/activity_register_user.xml" value="0.4" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/activity_select_page.xml" value="0.176" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/activity_term_and_conditions.xml" value="0.2" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/activity_user_page.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/term_conditions.xml" value="0.152" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/mipmap-anydpi-v26/i_agree.xml" value="0.14635416666666667" />
       </map>
     </option>
   </component>
