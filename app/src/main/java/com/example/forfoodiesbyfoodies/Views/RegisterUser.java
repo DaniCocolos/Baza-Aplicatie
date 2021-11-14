@@ -157,8 +157,10 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     }
                 });
 
-                ////////////////////////////////////////////////////////////////////////////////////////////////
-                //de rezolvat cu checkbox sa fie required !!!!!!!
+                /*
+                //////////////////////////////////////////////////////////////////////////////////////////////
+                TODO de rezolvat cu checkbox sa fie required !!!!!!!
+                */
                 reg_cb = (CheckBox) findViewById(R.id.reg_cb);
 ////////////////////////////////////////////////////////////////////////////////////
 
