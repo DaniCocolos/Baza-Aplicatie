@@ -1,6 +1,9 @@
 package com.example.forfoodiesbyfoodies.Views;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,19 +12,28 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Patterns;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.forfoodiesbyfoodies.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,15 +50,19 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
-     FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
     DatabaseReference dbref;
     private EditText editTextFirstName, editTextLastName, editTextUserName, editTextemail, editTextpw, editTextcpw;
     private ProgressBar progressBar;
     private ImageView logo2back;
-    private TextView registerUser;
+    private TextView registerUser,scrollable;
+    TextView textview_term;
+    Button button_agree;
     private String usertype = "normal";
     private CheckBox reg_cb;
     Integer x = 1;
+
+    boolean valid_fn, valid_lastname, valid_email, valid_password,valid_username;
     Handler handler;
     String time = "1500" ; // 1500 milliseconds = 1.5 seconds
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -86,8 +102,38 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(RegisterUser.this, TermAndConditions.class));
-                Intent go = new Intent(getApplicationContext(), TermAndConditions.class);
-                startActivity(go);
+                //dezactivat intent pentru a teste un model in xml
+                /*Intent go = new Intent(getApplicationContext(), TermAndConditions.class);
+                startActivity(go);*/
+                // inflate the layout of the popup window
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.term_conditions, null);
+
+                // create the popup window
+                int width = LinearLayout.LayoutParams.MATCH_PARENT;
+                int height = LinearLayout.LayoutParams.MATCH_PARENT;
+               // boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
+                textview_term = popupView.findViewById(R.id.textview_term);
+                textview_term.setText(R.string.textview_term);
+                textview_term.setMovementMethod(new ScrollingMovementMethod());
+                button_agree = popupView.findViewById(R.id.button_agree);
+                button_agree.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                        reg_cb = RegisterUser.this.findViewById(R.id.reg_cb);
+                        if (!reg_cb.isChecked()){
+                            reg_cb.performClick();
+                        }
+                    }
+                });
+                // show the popup window
+                // which view you pass in doesn't matter, it is only used for the window tolken
+                popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+
+
             }
         });
         //--------------------------------------------------------------------------------
@@ -107,8 +153,8 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(RegisterUser.this,Login.class));
             }
         });
-      // logo2back.setOnContextClickListener((View.OnContextClickListener) RegisterUser.this);
-       // logo2back.setOnContextClickListener((View.OnContextClickListener)this);
+        // logo2back.setOnContextClickListener((View.OnContextClickListener) RegisterUser.this);
+        // logo2back.setOnContextClickListener((View.OnContextClickListener)this);
         // this line above crash the app
 
 
@@ -136,6 +182,8 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
                 progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
+
+
                 editTextFirstName.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -144,16 +192,26 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if (editTextFirstName.getText().length() <= 3)
-                    {
-                        editTextFirstName.setError("First name should have minimum 3 letters");
-                        editTextFirstName.requestFocus();
-                    }
+                      /*  if (s.length() <= 3) {
+                            editTextFirstName.setError("First name should have minimum 3 letters - onTextChanged");
+                            editTextFirstName.requestFocus();
+                        }*/
                     }
 
                     @Override
                     public void afterTextChanged(Editable s) {
+                        if (s.length() < 3) {
+                            editTextFirstName.setError("First name should have minimum 3 letters");
+                            editTextFirstName.requestFocus();
 
+                          }else {
+                            Drawable img = ContextCompat.getDrawable(RegisterUser.this, R.drawable.ok_ico);
+                            img.setBounds(0, 0, img.getMinimumWidth(), img.getMinimumHeight());
+                            //editTextFirstName.setError("", img);
+                            //editTextFirstName.set
+                            editTextFirstName.setCompoundDrawables(null,null, img,null);
+                           // editTextFirstName.setCompoundDrawablesWithIntrinsicBounds(null,null, img,null);
+                        }
                     }
                 });
 
@@ -168,7 +226,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                 //editTextFirstName.setCompoundDrawablesWithIntrinsicBounds( img, null, null, null);
 
 
-                
+
                 String email = editTextemail.getText().toString().trim();
                 String firstName = editTextFirstName.getText().toString().trim();
                 String lastName = editTextLastName.getText().toString().trim();
@@ -178,33 +236,51 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
                 // to remove the icon when text change
                 // de lucrat la asta pentru a sterge iconita de la editTextFirstName dupa ce userul a inceput sa introduca text
+            do {
 
+            }while (x == 0);
                 if (firstName.length() <= 3)
                 {
-                    editTextFirstName.setError("First name should contain minimum 3 letters");
+                    editTextFirstName.setError("First name is required");
                     editTextFirstName.requestFocus();
 
                 }else if (lastName.length() == 0) {
-                    editTextLastName.setError("Last name should contain minimum 3 letters");
+                    editTextLastName.setError("Last name is required");
                     editTextLastName.requestFocus();
 
-                } else if (email.isEmpty() && !email.matches(emailPattern)) {
+                } else if (email.isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     editTextemail.setError("Email is required!");
                     editTextemail.requestFocus();
 
 
                 } else if (username.isEmpty()){
-                    editTextUserName.setText(Arrays.toString(email.split("@")));
+                   // editTextUserName.setText( firstName);
                     //reg_cb.requestFocus();  //reg_cb.requestFocus();
 
-                }else if ((password.compareTo(confirmPassword) == 0) && password.length() >= 4)
+                }else if (password.length() < 4)
                 {
-                    //reg_cb.requestFocus();  //reg_cb.requestFocus();
+                    editTextpw.setError("Password is at least 4 characters");
+                    editTextpw.requestFocus();
+                 } else if (confirmPassword.length()<4){
+                    editTextcpw.setError("Password is at least 4 characters");
+                    editTextcpw.requestFocus();
+                }else if (!(password.compareTo(confirmPassword) == 0)){
+                    editTextcpw.setError("Password should be the same as previous ");
+                    editTextcpw.forceLayout();
+                }
+
+
+
+
+
+
+                else
+                    {
+
                     if (!reg_cb.isChecked()) {
                         reg_cb.setError("You have to agree the Term and Conditions");
-                        //reg_cb.requestFocus();
-                        //reg_cb.requestFocus();  //reg_cb.requestFocus();
-                    }  else
+                    }
+                    else
 
                     {
                         User user = new User(firstName,lastName,email,password,username,usertype);
@@ -218,7 +294,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
 
 
-                        dbref.child(dbref.push().getKey()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        dbref.child(user.getEmail()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
 
@@ -245,11 +321,16 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                                 //user details saved in realtime database
                                 Toast.makeText(getApplicationContext(), "User registered succesfully - " +email1 + "  /  " + password1, Toast.LENGTH_LONG).show();
                             }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getApplicationContext(), "Error creating account" + e , Toast.LENGTH_SHORT).show();
+                            }
                         });
 
 
-                } }
-        }});
+                    } }
+            }});
 
 
 
@@ -257,8 +338,16 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
 
 
-        }
+    }
 
+    private void showInfo() {
+        @SuppressLint("ResourceType") AlertDialog.Builder builder = new AlertDialog.Builder(this, R.layout.term_conditions);
+       // builder.setMessage("Term and conditions MULTE LINII");
+
+        // Create and show the AlertDialog
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 
 
     public void move_to_next_activity(){
@@ -275,7 +364,9 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
     //create method for registerUser
 
+    public void validate_all_inputs(){
 
+    }
     @Override
     public void onClick(View v) {
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="@drawable/background_splh">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="20dp"
+
+            android:layout_marginRight="35dp"
+            android:text="@string/terms_of_service_and_privacy_policy"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/textview_term"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="160dp"
+            android:background="@color/white"
+            android:gravity="bottom|center|center_horizontal"
+            android:scrollbarSize="2dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/button_agree"
+            android:layout_width="143dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="625dp"
+            android:layout_marginEnd="130dp"
+            android:layout_marginRight="150dp"
+            android:layout_marginBottom="160dp"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/orange"
+            android:shadowColor="#A8A8A8"
+            android:text="I agree"
+
+
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:backgroundTint="@color/orange"
+
+            />
+
+</RelativeLayout>
