@@ -23,6 +23,9 @@
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/activity_user_page.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/term_conditions.xml" value="0.152" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/mipmap-anydpi-v26/i_agree.xml" value="0.14635416666666667" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.8805128205128205" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.8942708333333333" />
+        <entry key="app/src/main/res/layout/activity_register_user.xml" value="0.75" />
       </map>
     </option>
   </component>
