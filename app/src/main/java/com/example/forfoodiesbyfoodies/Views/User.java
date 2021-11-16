@@ -10,6 +10,15 @@ public class User {
     private String password;
     private String username;
     private String usertype;
+    public String getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
+
+
 
     public User(String firstname, String lastname, String email, String password, String username, String usertype) {
     this.firstname = firstname;
@@ -24,6 +33,7 @@ public class User {
     }
 
     public String getType() {
+
         return type;
     }
 
