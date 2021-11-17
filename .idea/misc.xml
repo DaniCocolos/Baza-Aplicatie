@@ -26,9 +26,10 @@
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/mipmap-anydpi-v26/i_agree.xml" value="0.14635416666666667" />
         <entry key="app/src/main/res/drawable/bg_calendar.xml" value="0.5328125" />
         <entry key="app/src/main/res/drawable/button_term.xml" value="0.3223958333333333" />
-        <entry key="app/src/main/res/layout/activity_book_table.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/activity_book_table.xml" value="0.25" />
         <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.5166666666666667" />
         <entry key="app/src/main/res/layout/custom_toast.xml" value="0.30625" />
+        <entry key="app/src/main/res/layout/custom_toast_calendar.xml" value="0.39427083333333335" />
       </map>
     </option>
   </component>

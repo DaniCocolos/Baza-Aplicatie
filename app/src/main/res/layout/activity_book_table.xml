@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Views.BookTable">
-<!--    android:background="@drawable/background_splh"-->
 
 
     <Button
@@ -24,7 +23,8 @@
         android:layout_marginBottom="38dp"
         android:background="@drawable/button_term"
         android:text="Book a table"
-        android:textColor="@color/white" />
+        android:textColor="#FFFFFF"
+        tools:ignore="TextContrastCheck" />
 
 
     <CalendarView
@@ -43,7 +43,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="135dp"
-        android:background="@drawable/bg_calendar"/>
+        android:background="@drawable/bg_calendar" />
 
     <ImageView
         android:id="@+id/imageView9"
