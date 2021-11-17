@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
+            android:name=".Views.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Views.SelectPage"
             android:exported="false" />
         <activity
@@ -25,7 +28,7 @@
             android:name=".Views.Login"
             android:exported="false" />
         <activity
-            android:name=".Views.MainActivity"
+            android:name=".Views.BookTable"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
