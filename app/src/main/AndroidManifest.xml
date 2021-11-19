@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
+            android:name=".add_street_food"
+            android:exported="false" />
+        <activity
+            android:name=".add_restaurant"
+            android:exported="false" />
+        <activity
+            android:name=".Street_food"
+            android:exported="false" />
+        <activity
+            android:name=".Restaurants"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".drawer_menu"
+            android:exported="false" />
+        <activity
             android:name=".Views.SelectPage"
             android:exported="false" />
         <activity
