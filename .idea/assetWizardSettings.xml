@@ -24,7 +24,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\danie\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/xs/d7p6b5tj7bngzp_hs_tb9b280000gn/T/ic_android_black_24dp.xml" />
                                                 <entry key="opacityPercent" value="60" />
                                               </map>
                                             </option>
@@ -69,7 +69,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\danie\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/xs/d7p6b5tj7bngzp_hs_tb9b280000gn/T/ic_android_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -81,7 +81,9 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\danie\Desktop\res\mipmap-anydpi-v26\i_agree.xml" />
+                                                <entry key="imagePath" value="$USER_HOME$/Downloads/platter-g6f0aa636c_1920.jpg" />
+                                                <entry key="scalingPercent" value="160" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -113,8 +115,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="legacyIconShape" value="HRECT" />
-                                      <entry key="outputName" value="i_agree" />
+                                      <entry key="outputName" value="restaurants" />
+                                      <entry key="showGrid" value="true" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -131,7 +133,21 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\danie\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/xs/d7p6b5tj7bngzp_hs_tb9b280000gn/T/ic_android_black_24dp.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="$USER_HOME$/Downloads/platter-g6f0aa636c_1920.jpg" />
+                                                <entry key="paddingPercent" value="-10" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -161,6 +177,13 @@
                                       </entry>
                                     </map>
                                   </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="cropped" value="true" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/platter-g6f0aa636c_1920.jpg" />
+                                    </map>
+                                  </option>
                                 </PersistentState>
                               </value>
                             </entry>
@@ -175,7 +198,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\danie\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/xs/d7p6b5tj7bngzp_hs_tb9b280000gn/T/ic_android_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -239,7 +262,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="imagePath" value="C:\Users\danie\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/xs/d7p6b5tj7bngzp_hs_tb9b280000gn/T/ic_android_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -280,6 +303,11 @@
                                       </entry>
                                     </map>
                                   </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="showGrid" value="true" />
+                                    </map>
+                                  </option>
                                 </PersistentState>
                               </value>
                             </entry>
@@ -308,7 +336,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/check_circle/baseline_check_circle_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/reviews/baseline_reviews_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -318,9 +346,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="1fbf32" />
-                            <entry key="outputName" value="ok_ico" />
-                            <entry key="sourceFile" value="C:\Users\danie\AndroidStudioProjects\FoodiesApp" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_reviews" />
+                            <entry key="sourceFile" value="/C:\Users\danie\AndroidStudioProjects\FoodiesApp" />
                           </map>
                         </option>
                       </PersistentState>

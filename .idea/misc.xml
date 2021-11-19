@@ -23,9 +23,35 @@
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/activity_user_page.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/layout/term_conditions.xml" value="0.152" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/FoodiesApp/app/src/main/res/mipmap-anydpi-v26/i_agree.xml" value="0.14635416666666667" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.8805128205128205" />
+        <entry key="app/src/main/res/drawable/button_term.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/drawable/ic_add_restaurant_24.xml" value="0.9104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_alternate_email_24.xml" value="0.9104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_pass_lock.xml" value="0.9104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.9104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_registration.xml" value="0.9104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_restaurant_24.xml" value="0.9104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_search_24.xml" value="0.5515625" />
+        <entry key="app/src/main/res/drawable/ic_streetfood_24.xml" value="0.5515625" />
+        <entry key="app/src/main/res/drawable/ic_upload.xml" value="0.7873873873873873" />
+        <entry key="app/src/main/res/drawable/ok_ico.xml" value="0.9104166666666667" />
+        <entry key="app/src/main/res/drawable/restaurants_background.xml" value="0.9104166666666667" />
+        <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.9104166666666667" />
+        <entry key="app/src/main/res/layout-v21/term_conditions.xml" value="0.4098277608915907" />
+        <entry key="app/src/main/res/layout/activity_add_restaurant.xml" value="1.1" />
+        <entry key="app/src/main/res/layout/activity_add_street_food.xml" value="0.7612612612612613" />
+        <entry key="app/src/main/res/layout/activity_drawer_menu.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.8942708333333333" />
         <entry key="app/src/main/res/layout/activity_register_user.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/activity_restaurants.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/activity_select_page.xml" value="0.7734234234234234" />
+        <entry key="app/src/main/res/layout/activity_street_food.xml" value="0.7612612612612613" />
+        <entry key="app/src/main/res/layout/activity_user_page.xml" value="0.7734234234234234" />
+        <entry key="app/src/main/res/layout/menu_header.xml" value="0.40398550724637683" />
+        <entry key="app/src/main/res/layout/term_conditions.xml" value="0.4098277608915907" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.6470588235294118" />
+        <entry key="app/src/main/res/menu/mainmenu.xml" value="0.1" />
       </map>
     </option>
   </component>
