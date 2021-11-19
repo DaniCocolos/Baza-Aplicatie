@@ -37,6 +37,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+
         android:autofillHints="first name"
         android:ems="10"
         android:fontFamily="sans-serif-smallcaps"
@@ -44,7 +45,6 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="@color/sobolan"
-        android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -63,7 +63,6 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="@color/sobolan"
-        android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -80,7 +79,7 @@
         android:hint="@string/username"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColor="@color/white"
+        android:textColor="#FBFAFA"
         android:textColorHint="@color/sobolan"
         android:textSize="12sp"
         app:layout_constraintHorizontal_bias="0.497"
@@ -103,7 +102,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_user" />
 
     <EditText
-        android:id="@+id/et_forgot_email"
+        android:id="@+id/et_em"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:autofillHints="email "
@@ -133,7 +132,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.116"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_forgot_email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_em" />
 
     <EditText
         android:id="@+id/et_pw"

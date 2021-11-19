@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
-            android:name=".Views.ForgotPassword"
-            android:exported="false" />
-        <activity
             android:name=".Views.SelectPage"
             android:exported="false" />
         <activity

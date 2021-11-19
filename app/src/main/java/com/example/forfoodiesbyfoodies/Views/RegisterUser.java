@@ -2,17 +2,22 @@ package com.example.forfoodiesbyfoodies.Views;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Patterns;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,10 +33,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.forfoodiesbyfoodies.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,20 +46,29 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
     FirebaseAuth mAuth;
     DatabaseReference dbref;
-    EditText editTextFirstName, editTextLastName, editTextUserName, editTextemail, editTextpw, editTextcpw;
-    ProgressBar progressBar;
-    ImageView logo2back;
-    TextView registerUser,textview_term;
+    private EditText editTextFirstName, editTextLastName, editTextUserName, editTextemail, editTextpw, editTextcpw;
+    private ProgressBar progressBar;
+    private ImageView logo2back;
+    private TextView registerUser,scrollable;
+    TextView textview_term;
     Button button_agree;
-    private final String usertype = "normal";
-    CheckBox reg_cb;
-     Handler handler;
+    private String usertype = "normal";
+    private CheckBox reg_cb;
+    Integer x = 1;
+
+    boolean valid_fn, valid_lastname, valid_email, valid_password,valid_username;
+    Handler handler;
     String time = "1500" ; // 1500 milliseconds = 1.5 seconds
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    //String x is used to get the checkbox status when the user press Register
+
+
     List<User> user_details_array = new ArrayList<>();
 
 
@@ -64,62 +80,276 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
 
-        mAuth = FirebaseAuth.getInstance();
-        // redirect to home page if pressed the logo
-        logo2back = (ImageView) findViewById(R.id.im_logo2);        //Logo + redirect
-        logo2back.setOnClickListener(this);
-        //------------------------------------------------------------------------------------------
-        registerUser = (Button) findViewById(R.id.btn_register_user); //Register button
-        registerUser.setOnClickListener(this);
-
-        editTextFirstName = (EditText) findViewById(R.id.et_fn);    //FirstName
-        editTextLastName = (EditText) findViewById(R.id.et_sn);     //LastName
-        editTextUserName = (EditText) findViewById(R.id.et_user);   //Username
-        editTextemail = (EditText) findViewById(R.id.et_forgot_email);        //Email
-
-        editTextpw = (EditText) findViewById(R.id.et_pw);           //Password
-        editTextcpw = (EditText) findViewById(R.id.et_cpw);         //Password confirmation
-
-        progressBar = (ProgressBar) findViewById(R.id.progressBar); //Progress bar
-        reg_cb = (CheckBox) findViewById(R.id.reg_cb);              //Checkbox
-
-
-        //------------------------------------------------------------------------------------------
-
-
-
-        //---------------------Terms of Service  functions and model--------------------------------
+        //--------------------------------------------------------------------------------
         TextView textView6 = findViewById(R.id.textView6);
         String text = "I accept the Terms of Service and Privacy Policy";
+
         SpannableString ss1 = new SpannableString(text);
+
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v) {
 
             }
 
         };
-        ss1.setSpan(clickableSpan, 13, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        ss1.setSpan(clickableSpan, 13,48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
         textView6.setText(ss1);
         textView6.setMovementMethod(LinkMovementMethod.getInstance());
 
-        //------------------------------------------------------------------------------------------
-        textView6.setOnClickListener(this);
+        textView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(RegisterUser.this, TermAndConditions.class));
+                //dezactivat intent pentru a teste un model in xml
+                /*Intent go = new Intent(getApplicationContext(), TermAndConditions.class);
+                startActivity(go);*/
+                // inflate the layout of the popup window
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.term_conditions, null);
+
+                // create the popup window
+                int width = LinearLayout.LayoutParams.MATCH_PARENT;
+                int height = LinearLayout.LayoutParams.MATCH_PARENT;
+               // boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
+                textview_term = popupView.findViewById(R.id.textview_term);
+                textview_term.setText(R.string.textview_term);
+                textview_term.setMovementMethod(new ScrollingMovementMethod());
+                button_agree = popupView.findViewById(R.id.button_agree);
+                button_agree.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                        reg_cb = RegisterUser.this.findViewById(R.id.reg_cb);
+                        if (!reg_cb.isChecked()){
+                            reg_cb.performClick();
+                        }
+                    }
+                });
+                // show the popup window
+                // which view you pass in doesn't matter, it is only used for the window tolken
+                popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+
+
+            }
+        });
+        //--------------------------------------------------------------------------------
+
+
+
+
+
+
+        dbref = FirebaseDatabase.getInstance().getReference("_users_");
+        mAuth = FirebaseAuth.getInstance();
+
+        logo2back = (ImageView) findViewById(R.id.im_logo2);
+        logo2back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterUser.this,Login.class));
+            }
+        });
+        // logo2back.setOnContextClickListener((View.OnContextClickListener) RegisterUser.this);
+        // logo2back.setOnContextClickListener((View.OnContextClickListener)this);
+        // this line above crash the app
+
+
+        registerUser = (Button) findViewById(R.id.btn_register_user);
+//        registerUser.setOnContextClickListener((View.OnContextClickListener) this);
+        // this line above crash the app
+
+        registerUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // de aici
+
+
+
+
+
+
+                editTextFirstName = (EditText) findViewById(R.id.et_fn);
+                editTextLastName = (EditText) findViewById(R.id.et_sn);
+                editTextUserName = (EditText) findViewById(R.id.et_user);
+                editTextemail = (EditText) findViewById(R.id.et_em);
+
+                editTextpw = (EditText) findViewById(R.id.et_pw);
+                editTextcpw = (EditText) findViewById(R.id.et_cpw);
+
+                progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+
+
+                editTextFirstName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                      /*  if (s.length() <= 3) {
+                            editTextFirstName.setError("First name should have minimum 3 letters - onTextChanged");
+                            editTextFirstName.requestFocus();
+                        }*/
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        if (s.length() < 3) {
+                            editTextFirstName.setError("First name should have minimum 3 letters");
+                            editTextFirstName.requestFocus();
+
+                          }else {
+                            Drawable img = ContextCompat.getDrawable(RegisterUser.this, R.drawable.ok_ico);
+                            img.setBounds(0, 0, img.getMinimumWidth(), img.getMinimumHeight());
+                            //editTextFirstName.setError("", img);
+                            //editTextFirstName.set
+                            editTextFirstName.setCompoundDrawables(null,null, img,null);
+                           // editTextFirstName.setCompoundDrawablesWithIntrinsicBounds(null,null, img,null);
+                        }
+                    }
+                });
+
+                ////////////////////////////////////////////////////////////////////////////////////////////////
+                //de rezolvat cu checkbox sa fie required !!!!!!!
+                reg_cb = (CheckBox) findViewById(R.id.reg_cb);
+////////////////////////////////////////////////////////////////////////////////////
+
+
+                // to enable the ico
+                //@SuppressLint("UseCompatLoadingForDrawables") Drawable img = editTextFirstName.getContext().getResources().getDrawable( R.drawable.ic_baseline_person_24 );
+                //editTextFirstName.setCompoundDrawablesWithIntrinsicBounds( img, null, null, null);
+
+
+
+                String email = editTextemail.getText().toString().trim();
+                String firstName = editTextFirstName.getText().toString().trim();
+                String lastName = editTextLastName.getText().toString().trim();
+                String username = editTextUserName.getText().toString().trim();
+                String password = editTextpw.getText().toString().trim();
+                String confirmPassword = editTextcpw.getText().toString().trim();
+
+                // to remove the icon when text change
+                // de lucrat la asta pentru a sterge iconita de la editTextFirstName dupa ce userul a inceput sa introduca text
+            do {
+
+            }while (x == 0);
+                if (firstName.length() <= 3)
+                {
+                    editTextFirstName.setError("First name is required");
+                    editTextFirstName.requestFocus();
+
+                }else if (lastName.length() == 0) {
+                    editTextLastName.setError("Last name is required");
+                    editTextLastName.requestFocus();
+
+                } else if (email.isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    editTextemail.setError("Email is required!");
+                    editTextemail.requestFocus();
+
+
+                } else if (username.isEmpty()){
+                   // editTextUserName.setText( firstName);
+                    //reg_cb.requestFocus();  //reg_cb.requestFocus();
+
+                }else if (password.length() < 4)
+                {
+                    editTextpw.setError("Password is at least 4 characters");
+                    editTextpw.requestFocus();
+                 } else if (confirmPassword.length()<4){
+                    editTextcpw.setError("Password is at least 4 characters");
+                    editTextcpw.requestFocus();
+                }else if (!(password.compareTo(confirmPassword) == 0)){
+                    editTextcpw.setError("Password should be the same as previous ");
+                    editTextcpw.forceLayout();
+                }
+
+
+
+
+
+
+                else
+                    {
+
+                    if (!reg_cb.isChecked()) {
+                        reg_cb.setError("You have to agree the Term and Conditions");
+                    }
+                    else
+
+                    {
+                        User user = new User(firstName,lastName,email,password,username,usertype);
+
+
+
+
+
+
+
+
+
+
+                        dbref.child(user.getEmail()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+
+                                user_details_array.add(user);
+                                String email1 = user_details_array.get(0).getEmail().toString();
+                                String password1 = user_details_array.get(0).getPassword().toString();
+                                mAuth.createUserWithEmailAndPassword(email1,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                                                                                 @Override
+                                                                                                                 public void onComplete(@NonNull Task<AuthResult> task) {
+                                                                                                                     // created user with email and passwor/ working just with gmail
+
+                                                                                                                     // //Toast.makeText(getApplicationContext(), "Created", Toast.LENGTH_SHORT).show();
+                                                                                                                     move_to_next_activity();
+                                                                                                                 }
+                                                                                                             }
+                                ).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getApplicationContext(), "There is an error, please try again later! If you are in a hurry contact our customer support department" + e, Toast.LENGTH_SHORT).show();
+                                        move_to_next_activity();
+
+                                    }
+                                });
+                                //user details saved in realtime database
+                                Toast.makeText(getApplicationContext(), "User registered succesfully - " +email1 + "  /  " + password1, Toast.LENGTH_LONG).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getApplicationContext(), "Error creating account" + e , Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                    } }
+            }});
+
+
+
+
+
+
+
     }
 
-        // popout for term and conditions-----------------------------------------------------------
     private void showInfo() {
         @SuppressLint("ResourceType") AlertDialog.Builder builder = new AlertDialog.Builder(this, R.layout.term_conditions);
-        // builder.setMessage("Term and conditions MULTE LINII");
+       // builder.setMessage("Term and conditions MULTE LINII");
 
         // Create and show the AlertDialog
         final AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-        //------------------------------------------------------------------------------------------
 
 
-        // method to move to login activity // Maybe we don't need this-----------------------------
     public void move_to_next_activity(){
         handler=new Handler();
         // .postDelayed is a function that run after a specific time format  )
@@ -132,188 +362,13 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             }
         }, Long.parseLong(time)); }
 
-        //------------------------------------------------------------------------------------------
+    //create method for registerUser
 
-    public void registerUser(){
+    public void validate_all_inputs(){
 
     }
-
     @Override
     public void onClick(View v) {
-            switch (v.getId())
-            {
-                case R.id.im_logo2:
-                    startActivity(new Intent(this, SelectPage.class));
-                    break;
-                case R.id.btn_register_user:
-                    RegisterUser();
-                    break;
-                case R.id.textView6:
-                    term_and_conditions();
-                    break;
-            }
+
     }
-
-        //method to register user in the auth and realtime, firstly, validation of input texts
-        public void RegisterUser(){
-
-            String email = editTextemail.getText().toString().trim();
-            String firstName = editTextFirstName.getText().toString().trim();
-            String lastName = editTextLastName.getText().toString().trim();
-            String username = editTextUserName.getText().toString().trim();
-            String password = editTextpw.getText().toString().trim();
-            String confirmPassword = editTextcpw.getText().toString().trim();
-
-            //Checking if first name is empty or it length is less than 3 letters
-            if (firstName.isEmpty() | firstName.length() < 3){
-                editTextFirstName.setError("First name is required. Minimum 3 characters");
-                editTextFirstName.requestFocus();
-                return;
-            }
-
-            //Checking if last name is empty or it length is less than 3 letters
-            if (lastName.isEmpty() | lastName.length() < 3){
-                editTextLastName.setError("Last name is required. Minimum 3 characters");
-                editTextLastName.requestFocus();
-                return;
-            }
-
-            //Checking if username is empty or it length is less than 3 letters
-            if (username.isEmpty() | username.length() < 3){
-                editTextUserName.setError("Username is required. Minimum 3 characters");
-                editTextUserName.requestFocus();
-                return;
-            }
-
-            //Checking if email is empty or it length is less than 3 letters
-            if (email.isEmpty()){
-                editTextemail.setError("Email is required!");
-                editTextemail.requestFocus();
-                return;
-            }
-            //Checking if the email is valid
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-            {
-                editTextemail.setError("Please provide a valid email. Ex. gmail");
-                editTextemail.requestFocus();
-                return;
-            }
-
-            if (password.isEmpty() | password.length()<4)
-            {
-                editTextpw.setError("Password is required. Minimum 4 characters");
-                editTextpw.requestFocus();
-                return;
-            }
-
-            if (confirmPassword.isEmpty() | confirmPassword.length() < 4)
-            {
-                editTextcpw.setError("Password is required. Minimum 4 characters");
-                editTextcpw.requestFocus();
-                return;
-            }
-            if (!(password.compareTo(confirmPassword) == 0))
-            {
-                editTextcpw.setError("Password are not the same. Please try again");
-                editTextcpw.requestFocus();
-                return;
-            }
-
-            progressBar.setVisibility(View.VISIBLE);
-
-            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-
-
-                        if (task.isSuccessful())
-                        {
-                            User user = new User(firstName,lastName,email,password,username,usertype);
-                            FirebaseDatabase.getInstance().getReference("_users_").child(FirebaseAuth.
-                                    getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful())
-                                    {
-                                        Toast.makeText(RegisterUser.this, "Successfully registered.", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
-                                        startActivity(new Intent(RegisterUser.this, Login.class));
-
-                                    }else
-                                        {
-                                        Toast.makeText(RegisterUser.this, "Error occured: " + task.toString(), Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
-
-
-                        }
-                        }
-
-
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    if (e.toString().contains("already"))
-                    {
-                        Toast.makeText(RegisterUser.this,"Email already in use, please reset your password", Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.GONE);
-                    }
-                    else {
-                        Toast.makeText(RegisterUser.this, "An error occured, please try again later!", Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
-                    }
-                }
-            });
-
-
-        }
-        //the end of RegisterUser()
-        public void term_and_conditions(){
-
-                    //startActivity(new Intent(RegisterUser.this, TermAndConditions.class));
-
-                /*Intent go = new Intent(getApplicationContext(), TermAndConditions.class);
-                startActivity(go);*/
-                    // inflate the layout of the popup window
-                    LayoutInflater inflater = (LayoutInflater)
-                            getSystemService(LAYOUT_INFLATER_SERVICE);
-                    View popupView = inflater.inflate(R.layout.term_conditions, null);
-
-                    // create the popup window
-                    int width = LinearLayout.LayoutParams.MATCH_PARENT;
-                    int height = LinearLayout.LayoutParams.MATCH_PARENT;
-                    // boolean focusable = true; // lets taps outside the popup also dismiss it
-                    final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
-                    textview_term = popupView.findViewById(R.id.textview_term);
-                    textview_term.setText(R.string.textview_term);
-                    textview_term.setMovementMethod(new ScrollingMovementMethod());
-                    button_agree = popupView.findViewById(R.id.button_agree);
-                    button_agree.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            reg_cb = RegisterUser.this.findViewById(R.id.reg_cb);
-                            if (!reg_cb.isChecked()) {
-                                //reg_cb.performClick();
-
-                                popupWindow.dismiss();
-                            }
-                        }
-                    });
-                    // show the popup window
-                    // which view you pass in doesn't matter, it is only used for the window tolken
-                    popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-
-
-                }
-
-
-
-
-} // this is for the begin
-
-
-
-
+}
