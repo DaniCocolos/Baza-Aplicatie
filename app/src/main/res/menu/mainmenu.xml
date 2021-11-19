@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_24"
+        android:title="@string/home" />
+
+    <!--  <item-->
+    <!--      android:id="@+id/nav_search"-->
+    <!--      android:title="@string/search"-->
+    <!--      android:icon="@drawable/ic_search_24"/>-->
+
+    <item
+        android:id="@+id/nav_restaurant"
+        android:icon="@drawable/ic_restaurant_24"
+        android:title="@string/restaurant" />
+
+    <item
+        android:id="@+id/nav_streetfood"
+        android:icon="@drawable/ic_streetfood_24"
+        android:title="@string/street_food" />
+
+    <!--        </group>-->
+
+    <!--    <item android:title="Add Missing Places">-->
+    <!--        <menu>-->
+    <!--            <group android:checkableBehavior="single">-->
+    <!--                <item-->
+    <!--                    android:id="@+id/nav_restaurant"-->
+    <!--                    android:title="@string/restaurants"-->
+    <!--                    android:icon="@drawable/ic_add_restaurant_24"/>-->
+    <item
+        android:id="@+id/nav_add_streetfood"
+        android:icon="@drawable/ic_add_restaurant_24"
+        android:title="@string/add_street_food" />
+    <item
+        android:id="@+id/nav_reservation"
+        android:icon="@drawable/ic_registration"
+        android:title="@string/reservation" />
+    <item
+        android:id="@+id/nav_review"
+        android:icon="@drawable/ic_reviews"
+        android:title="@string/reviews" />
+
+
+    <!--            </group>-->
+    <!--        </menu>-->
+
+
+    <item android:title="Profile">
+        <menu>
+            <group android:checkableBehavior="single">
+                <!--                    <item-->
+                <!--                        android:id="@+id/nav_login"-->
+                <!--                        android:title="@string/login"-->
+                <!--                        android:icon="@drawable/ic_login_24"/>-->
+                <!--                    <item-->
+                <!--                        android:id="@+id/nav_register"-->
+                <!--                        android:title="@string/register"-->
+                <!--                        android:icon="@drawable/ic_registration">-->
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_profile"
+                    android:title="@string/profile" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_logout_24"
+                    android:title="@string/logout">
+
+
+            </group>
+        </menu>
+    </item>
+
+
+</menu>
