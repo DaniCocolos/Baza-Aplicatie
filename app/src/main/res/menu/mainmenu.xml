@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"/>
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home_24"
@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/nav_streetfood"
-        android:icon="@drawable/ic_streetfood_24"
+        android:icon="@drawable/ic_add_restaurant_24"
         android:title="@string/street_food" />
 
     <!--        </group>-->
@@ -66,7 +66,7 @@
                 <item
                     android:id="@+id/nav_logout"
                     android:icon="@drawable/ic_logout_24"
-                    android:title="@string/logout">
+                    android:title="@string/logout"/>
 
 
             </group>

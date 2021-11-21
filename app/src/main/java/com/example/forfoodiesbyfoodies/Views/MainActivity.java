@@ -12,7 +12,7 @@ import com.example.forfoodiesbyfoodies.R;
 public class MainActivity extends AppCompatActivity {
 
     Handler handler;
-    Integer time = 1500;
+    Integer time = 1500; //time declaration 1500 ms = 1.5 seconds
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
