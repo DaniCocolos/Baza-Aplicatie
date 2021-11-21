@@ -33,6 +33,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
     private User user1;
 
 
+
     Button buton;
 
     @Override
@@ -46,7 +47,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbref = FirebaseDatabase.getInstance().getReference();
         userId = user.getUid();
-
+        Toast.makeText(UserPage.this, " Userobject value : " + user.getEmail(), Toast.LENGTH_LONG).show();
 
         final TextView user_fn = findViewById(R.id.up_user_fn);
         final TextView user_ln = findViewById(R.id.up_user_ln);
@@ -70,7 +71,8 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
                     String email = user.getEmail();
                     String userType = user.getUsertype();
 
-                    user_fn.setText(fn);
+
+                    user_fn.setText(user.getFirstname());
                     user_ln.setText(ln);
                     user_email.setText(email);
                     up_account_type.setText(userType);

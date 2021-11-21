@@ -1,8 +1,10 @@
-package com.example.forfoodiesbyfoodies;
+package com.example.forfoodiesbyfoodies.Views;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.forfoodiesbyfoodies.R;
 
 public class add_restaurant extends AppCompatActivity {
 

@@ -43,6 +43,7 @@
         android:ems="10"
         android:hint="@string/last_name"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +77,8 @@
         android:layout_marginRight="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_mode_edit" />
+        app:srcCompat="@drawable/ic_mode_edit"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/up_account_type"
