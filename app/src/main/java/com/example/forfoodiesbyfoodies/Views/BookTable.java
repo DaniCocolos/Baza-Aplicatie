@@ -1,22 +1,15 @@
 package com.example.forfoodiesbyfoodies.Views;
 
-import androidx.annotation.NonNull;
-
-import android.os.Build;
+import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.widget.CalendarView;
-
 import com.example.forfoodiesbyfoodies.R;
-
-import android.widget.Toast;
 
 
 public class BookTable extends AppCompatActivity {

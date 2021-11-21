@@ -1,8 +1,5 @@
 package com.example.forfoodiesbyfoodies.Models;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.forfoodiesbyfoodies.Models.User;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.Views.Login;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,9 +23,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-
-import java.util.ArrayList;
 
 public class UserPage extends AppCompatActivity implements View.OnClickListener {
     private FirebaseUser user;
@@ -44,13 +40,12 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_page);
 
-        buton = findViewById(R.id.up_logout);
+        buton =  findViewById(R.id.up_logout);
         buton.setOnClickListener(this);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbref = FirebaseDatabase.getInstance().getReference();
         userId = user.getUid();
-
 
 
         final TextView user_fn = findViewById(R.id.up_user_fn);
@@ -68,9 +63,8 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         dbref.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-               User user = snapshot.getValue(User.class);
-                if (user != null)
-                {
+                User user = snapshot.getValue(User.class);
+                if (user != null) {
                     String fn = user.getFirstname();
                     String ln = user.getLastname();
                     String email = user.getEmail();
@@ -80,7 +74,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
                     user_ln.setText(ln);
                     user_email.setText(email);
                     up_account_type.setText(userType);
-                   // Toast.makeText(getApplicationContext(), "User-type: " + userType, Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getApplicationContext(), "User-type: " + userType, Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -88,39 +82,33 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(UserPage.this, "There was an error: " +error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserPage.this, "There was an error: " + error, Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     //-----CHANGING FIRST NAME START--------------------------------------------------------------------------------------------
-        public void change_fn()
-        {       EditText user_fn = findViewById(R.id.up_user_fn);
+    public void change_fn() {
+        EditText user_fn = findViewById(R.id.up_user_fn);
 
-                dbref.child("_users_").child(userId).child("firstname").setValue(user_fn.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            Toast.makeText(UserPage.this, "You've just updated your firstname ", Toast.LENGTH_LONG ).show();
-                        } else
-                        {
-                            Toast.makeText(UserPage.this, "There was an error. Please try again in 5 minutes", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
+        dbref.child("_users_").child(userId).child("firstname").setValue(user_fn.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(UserPage.this, "You've just updated your firstname ", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(UserPage.this, "There was an error. Please try again in 5 minutes", Toast.LENGTH_LONG).show();
+                }
             }
+        });
+
+    }
     //-----CHANGING FIRST NAME END--------------------------------------------------------------------------------------------
-
-
-
-
 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.up_logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(UserPage.this, Login.class));

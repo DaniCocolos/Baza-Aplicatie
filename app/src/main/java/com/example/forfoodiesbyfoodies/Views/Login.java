@@ -26,11 +26,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity implements View.OnClickListener{
+public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView logo;
-    private TextView register,forgot_password;
-    EditText email,password;
+    private TextView register, forgot_password;
+    EditText email, password;
     Button button_login;
     ProgressBar progressbar_login;
     private FirebaseAuth mAuth;
@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
 
         email = (EditText) findViewById(R.id.et_em);
-        password= (EditText) findViewById(R.id.et_pw);
+        password = (EditText) findViewById(R.id.et_pw);
 
 
         forgot_password = (TextView) findViewById(R.id.et_fpw);
@@ -65,13 +65,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick( View v) {
+            public void onClick(View v) {
 
             }
 
         };
 
-        ss.setSpan(clickableSpan, 27,34, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
+        ss.setSpan(clickableSpan, 27, 34, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.setText(ss);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -83,7 +83,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.et_text_reg:
                 startActivity(new Intent(Login.this, RegisterUser.class));
                 break;
@@ -98,54 +98,47 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 break;
 
 
-
         }
     }
 
 
-    public void login(){
+    public void login() {
         String email_login = email.getText().toString().trim();
         String password_login = password.getText().toString().trim();
 
-        if (email_login.isEmpty())
-        {
+        if (email_login.isEmpty()) {
             email.setError("Email is required");
             email.requestFocus();
             return;
         }
 
-        if (!(Patterns.EMAIL_ADDRESS.matcher(email_login).matches()))
-        {
+        if (!(Patterns.EMAIL_ADDRESS.matcher(email_login).matches())) {
             email.setError("Please use a valid email address");
             email.requestFocus();
             return;
         }
-        if (password_login.isEmpty())
-        {
+        if (password_login.isEmpty()) {
             password.setError("Password is required");
             password.requestFocus();
             return;
         }
 
-        if (password_login.length() < 4)
-        {
+        if (password_login.length() < 4) {
             password.setError("Password is 4 minimum letters");
             password.requestFocus();
             return;
         }
-       // progressbar_login.setVisibility(View.VISIBLE);
+        // progressbar_login.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(email_login,password_login).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email_login, password_login).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful())
-                {
+                if (task.isSuccessful()) {
                     Toast.makeText(Login.this, "You will be redirected to home page", Toast.LENGTH_SHORT).show();
                     // redirect to user profile or another page
-                     startActivity(new Intent(Login.this, UserPage.class));
+                    startActivity(new Intent(Login.this, UserPage.class));
                 }//TODO aici sunt pentru a afisa eroare daca email exista in baza noastra de date
-                else
-                {
+                else {
                     Toast.makeText(Login.this, "Login failed, please try again: " + task, Toast.LENGTH_SHORT).show();
                     //progressbar_login.setVisibility(View.GONE);
                 }

@@ -42,21 +42,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
+public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
     FirebaseAuth mAuth;
     DatabaseReference dbref;
     EditText editTextFirstName, editTextLastName, editTextUserName, editTextemail, editTextpw, editTextcpw;
     ProgressBar progressBar;
     ImageView logo2back;
-    TextView registerUser,textview_term;
+    TextView registerUser, textview_term;
     Button button_agree;
     private final String usertype = "normal";
     CheckBox reg_cb;
     Handler handler;
-    String time = "1500" ; // 1500 milliseconds = 1.5 seconds
+    String time = "1500"; // 1500 milliseconds = 1.5 seconds
     List<User> user_details_array = new ArrayList<>();
-
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -86,8 +84,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
 
         //------------------------------------------------------------------------------------------
-
-
 
 
         //---------------------Terms of Service  functions and model--------------------------------
@@ -122,28 +118,28 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
 
     // method to move to login activity // Maybe we don't need this-----------------------------
-    public void move_to_next_activity(){
-        handler=new Handler();
+    public void move_to_next_activity() {
+        handler = new Handler();
         // .postDelayed is a function that run after a specific time format  )
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(RegisterUser.this,Login.class);
+                Intent intent = new Intent(RegisterUser.this, Login.class);
                 startActivity(intent); //start intent
                 finish();
             }
-        }, Long.parseLong(time)); }
+        }, Long.parseLong(time));
+    }
 
     //------------------------------------------------------------------------------------------
 
-    public void registerUser(){
+    public void registerUser() {
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.im_logo2:
                 startActivity(new Intent(this, User.class));
                 break;
@@ -157,7 +153,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
     }
 
     //method to register user in the auth and realtime, firstly, validation of input texts
-    public void RegisterUser(){
+    public void RegisterUser() {
 
         String email = editTextemail.getText().toString().trim();
         String firstName = editTextFirstName.getText().toString().trim();
@@ -167,55 +163,51 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         String confirmPassword = editTextcpw.getText().toString().trim();
 
         //Checking if first name is empty or it length is less than 3 letters
-        if (firstName.isEmpty() | firstName.length() < 3){
+        if (firstName.isEmpty() | firstName.length() < 3) {
             editTextFirstName.setError("First name is required. Minimum 3 characters");
             editTextFirstName.requestFocus();
             return;
         }
 
         //Checking if last name is empty or it length is less than 3 letters
-        if (lastName.isEmpty() | lastName.length() < 3){
+        if (lastName.isEmpty() | lastName.length() < 3) {
             editTextLastName.setError("Last name is required. Minimum 3 characters");
             editTextLastName.requestFocus();
             return;
         }
 
         //Checking if username is empty or it length is less than 3 letters
-        if (username.isEmpty() | username.length() < 3){
+        if (username.isEmpty() | username.length() < 3) {
             editTextUserName.setError("Username is required. Minimum 3 characters");
             editTextUserName.requestFocus();
             return;
         }
 
         //Checking if email is empty or it length is less than 3 letters
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             editTextemail.setError("Email is required!");
             editTextemail.requestFocus();
             return;
         }
         //Checking if the email is valid
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-        {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             editTextemail.setError("Please provide a valid email. Ex. gmail");
             editTextemail.requestFocus();
             return;
         }
 
-        if (password.isEmpty() | password.length()<4)
-        {
+        if (password.isEmpty() | password.length() < 4) {
             editTextpw.setError("Password is required. Minimum 4 characters");
             editTextpw.requestFocus();
             return;
         }
 
-        if (confirmPassword.isEmpty() | confirmPassword.length() < 4)
-        {
+        if (confirmPassword.isEmpty() | confirmPassword.length() < 4) {
             editTextcpw.setError("Password is required. Minimum 4 characters");
             editTextcpw.requestFocus();
             return;
         }
-        if (!(password.compareTo(confirmPassword) == 0))
-        {
+        if (!(password.compareTo(confirmPassword) == 0)) {
             editTextcpw.setError("Password are not the same. Please try again");
             editTextcpw.requestFocus();
             return;
@@ -223,26 +215,23 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
         progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
 
-                if (task.isSuccessful())
-                {
-                    User user = new User(firstName,lastName,email,password,username,usertype);
+                if (task.isSuccessful()) {
+                    User user = new User(firstName, lastName, email, password, username, usertype);
                     FirebaseDatabase.getInstance().getReference("_users_").child(FirebaseAuth.
                             getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful())
-                            {
+                            if (task.isSuccessful()) {
                                 Toast.makeText(RegisterUser.this, "Successfully registered.", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                                 startActivity(new Intent(RegisterUser.this, Login.class));
 
-                            }else
-                            {
+                            } else {
                                 Toast.makeText(RegisterUser.this, "Error occured: " + task.toString(), Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                             }
@@ -257,12 +246,10 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                if (e.toString().contains("already"))
-                {
-                    Toast.makeText(RegisterUser.this,"Email already in use, please reset your password", Toast.LENGTH_LONG).show();
+                if (e.toString().contains("already")) {
+                    Toast.makeText(RegisterUser.this, "Email already in use, please reset your password", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);
-                }
-                else {                                                                                  // + e catch the error from firebase auth and is printed in the toast// should be disabled after.
+                } else {                                                                                  // + e catch the error from firebase auth and is printed in the toast// should be disabled after.
                     Toast.makeText(RegisterUser.this, "An error occured, please try again later! : " + e, Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                 }
@@ -271,8 +258,9 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
 
     }
+
     //the end of RegisterUser()
-    public void term_and_conditions(){
+    public void term_and_conditions() {
 
         //startActivity(new Intent(RegisterUser.this, TermAndConditions.class));
 
@@ -301,7 +289,8 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     //reg_cb.performClick();
                     reg_cb.performClick();
                     popupWindow.dismiss();
-                }else {popupWindow.dismiss();
+                } else {
+                    popupWindow.dismiss();
 
                 }
             }
@@ -312,8 +301,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
 
     }
-
-
 
 
 } // this is for the begin

@@ -7,5 +7,5 @@
 
     <stroke
         android:width="5dp"
-        android:color="@color/user_profile_image_grey" />
+        />
 </shape>

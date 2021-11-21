@@ -1,8 +1,8 @@
 package com.example.forfoodiesbyfoodies;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class add_street_food extends AppCompatActivity {
 
