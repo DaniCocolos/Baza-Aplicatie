@@ -45,9 +45,9 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         buton.setOnClickListener(this);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-        dbref = FirebaseDatabase.getInstance().getReference();
+        dbref = FirebaseDatabase.getInstance().getReference("_users_");
         userId = user.getUid();
-        Toast.makeText(UserPage.this, " Userobject value : " + user.getEmail(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(UserPage.this, " Userobject value : " + user.getEmail(), Toast.LENGTH_LONG).show();
 
         final TextView user_fn = findViewById(R.id.up_user_fn);
         final TextView user_ln = findViewById(R.id.up_user_ln);
@@ -93,7 +93,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
     public void change_fn() {
         EditText user_fn = findViewById(R.id.up_user_fn);
 
-        dbref.child("_users_").child(userId).child("firstname").setValue(user_fn.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+        dbref.child(userId).child("firstname").setValue(user_fn.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
