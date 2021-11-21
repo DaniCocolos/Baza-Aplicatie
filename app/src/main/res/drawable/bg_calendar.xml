@@ -7,6 +7,6 @@
     Change to the color you want for the border
     <stroke
         android:width="2dp"
-        android:color="@color/grey" />
+        android:color="@color/sobolan" />
 
 </shape>

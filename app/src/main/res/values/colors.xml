@@ -4,8 +4,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FD945D</color>
-    <color name="grey">#707070</color>
+    <color name="sobolan">#707070</color>
     <color name="blue">#0176B4</color>
     <color name="pink">#FFF59797</color>
+
+    <color name="user_profile_image_grey">#707070</color>
 
 </resources>
