@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/home_restaurant_photo"
         android:layout_width="201dp"
         android:layout_height="116dp"
         android:layout_marginTop="44dp"
@@ -44,12 +44,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_welcome"
-        app:srcCompat="@drawable/restaurants_background"
         tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck"
         tools:srcCompat="@drawable/restaurants_menu" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/home_streetfood_photo"
         android:layout_width="201dp"
         android:layout_height="116dp"
         android:layout_marginStart="145dp"
@@ -61,7 +60,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:srcCompat="@drawable/restaurants_background"
         tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck"
         tools:srcCompat="@drawable/restaurants_menu" />
 
@@ -95,7 +93,7 @@
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/home_restaurant_photo" />
 
     <TextView
         android:id="@+id/textView5"
@@ -113,25 +111,24 @@
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/home_streetfood_photo" />
 
     <TextView
         android:id="@+id/textView8"
 
         android:layout_width="178dp"
         android:layout_height="18dp"
-        android:layout_marginStart="167dp"
-        android:layout_marginLeft="167dp"
-        android:layout_marginTop="134dp"
-        android:layout_marginEnd="146dp"
-        android:layout_marginRight="146dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="112dp"
         android:fontFamily="@font/amaranth_bold_italic"
         android:text="@string/please_visit_our_forum"
+        android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="12sp"
         android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/home_streetfood_photo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

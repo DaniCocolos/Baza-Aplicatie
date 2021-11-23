@@ -12,8 +12,7 @@
     <string name="log_in_by">or log in using</string>
 
     <string name="email_hint">example@gmail.com</string>
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
+
     <string name="username">User Name</string>
     <string name="confirm_password">Confirm password</string>
     <string name="term_page">Terms and conditions</string>
@@ -59,4 +58,8 @@
     <string name="Forum">forum</string>
     <string name="please_visit_our_forum">Please visit our forum</string>
     <string name="app_logo">app logo</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="i_accept_the_terms_of_service_and_privacy_policy">I accept the Terms of Service and Privacy Policy</string>
+    <string name="user_name">User Name</string>
 </resources>

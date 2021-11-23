@@ -36,9 +36,12 @@
         <activity
             android:name=".Views.BookTable"
             android:exported="false">
+        </activity>
+        <activity
+            android:name=".Restaurants"
+            android:exported="false">
 
         </activity>
-
         <activity android:name=".Views.ForgotPassword"
             android:exported="false">
         </activity>
