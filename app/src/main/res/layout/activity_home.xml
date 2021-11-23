@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_splh"
-    tools:context=".Home">
+    tools:context=".Views.SelectPage">
 
 
     <ImageView
@@ -13,6 +13,8 @@
         android:layout_width="136dp"
         android:layout_height="114dp"
         android:layout_marginTop="16dp"
+
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,15 +36,99 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="222dp"
-        android:layout_height="158dp"
-        android:layout_marginTop="73dp"
+        android:id="@+id/home_restaurant_photo"
+        android:layout_width="201dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="44dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_welcome"
-        app:srcCompat="@drawable/restaurants_background"
+        tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck"
         tools:srcCompat="@drawable/restaurants_menu" />
+
+    <ImageButton
+        android:id="@+id/home_streetfood_photo"
+        android:layout_width="201dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginRight="145dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck"
+        tools:srcCompat="@drawable/restaurants_menu" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="207dp"
+        android:layout_marginLeft="207dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="208dp"
+        android:layout_marginRight="208dp"
+        android:fontFamily="@font/amaranth_bold_italic"
+        android:text="@string/restaurants"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_restaurant_photo" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="210dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="211dp"
+        android:layout_marginRight="211dp"
+        android:fontFamily="@font/amaranth_bold_italic"
+        android:text="@string/street_food"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_streetfood_photo" />
+
+    <TextView
+        android:id="@+id/textView8"
+
+        android:layout_width="178dp"
+        android:layout_height="18dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="112dp"
+        android:fontFamily="@font/amaranth_bold_italic"
+        android:text="@string/please_visit_our_forum"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_streetfood_photo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
