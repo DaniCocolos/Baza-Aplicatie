@@ -37,7 +37,8 @@
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.181"
-        app:srcCompat="@drawable/ic_menu" />
+        app:srcCompat="@drawable/ic_menu"
+        tools:ignore="VectorDrawableCompat" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -57,7 +58,7 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         tools:textColorHint="@color/sobolan" />
@@ -66,14 +67,14 @@
         android:id="@+id/et_add_rest_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Restaurant Address"
         android:inputType="textPostalAddress"
         android:minHeight="48dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_add_restaurant"
         tools:textColorHint="@color/sobolan" />
@@ -82,12 +83,12 @@
         android:id="@+id/btn_upload_iv_rest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="104dp"
         android:text="Picture"
         app:backgroundTint="@color/orange"
         app:icon="@drawable/ic_upload"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_add_rest_add" />
 

@@ -50,4 +50,12 @@
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
     <string name="add_street_food">Add Street Food</string>
+    <string name="invisible_button" />
+    <string name="user_account_type">User account type</string>
+    <string name="back">Back</string>
+    <string name="set_button" />
+    <string name="restaurants">Restaurants</string>
+    <string name="please_visit_our">Please visit our</string>
+    <string name="Forum">forum</string>
+    <string name="please_visit_our_forum">Please visit our forum</string>
 </resources>

@@ -9,6 +9,16 @@ public class User {
     private String password;
     private String username;
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    private String profilePicture;
+
     public String getUsertype() {
         return usertype;
     }
@@ -19,13 +29,14 @@ public class User {
 
     private String usertype;
 
-    public User(String firstname, String lastname, String email, String password, String username, String usertype) {
+    public User(String firstname, String lastname, String email, String password, String username, String usertype, String profilePicture) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
         this.username = username;
         this.usertype = usertype;
+        this.profilePicture = profilePicture;
     }
 
 

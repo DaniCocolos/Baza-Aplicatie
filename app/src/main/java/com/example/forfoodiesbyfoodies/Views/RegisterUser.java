@@ -51,6 +51,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
     TextView registerUser, textview_term;
     Button button_agree;
     private final String usertype = "normal";
+    private final String profilePicture = "https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png";
     CheckBox reg_cb;
     Handler handler;
     String time = "1500"; // 1500 milliseconds = 1.5 seconds
@@ -196,14 +197,14 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        if (password.isEmpty() | password.length() < 4) {
-            editTextpw.setError("Password is required. Minimum 4 characters");
+        if (password.isEmpty() | password.length() < 6) {
+            editTextpw.setError("Password is required. Minimum 6 characters");
             editTextpw.requestFocus();
             return;
         }
 
-        if (confirmPassword.isEmpty() | confirmPassword.length() < 4) {
-            editTextcpw.setError("Password is required. Minimum 4 characters");
+        if (confirmPassword.isEmpty() | confirmPassword.length() < 6) {
+            editTextcpw.setError("Password is required. Minimum 6 characters");
             editTextcpw.requestFocus();
             return;
         }
@@ -221,7 +222,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
 
                 if (task.isSuccessful()) {
-                    User user = new User(firstName, lastName, email, password, username, usertype);
+                    User user = new User(firstName, lastName, email, password, username, usertype, profilePicture);
                     FirebaseDatabase.getInstance().getReference("_users_").child(FirebaseAuth.
                             getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
