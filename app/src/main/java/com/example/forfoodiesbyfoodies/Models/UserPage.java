@@ -48,7 +48,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
 
     private String userId;
     private Button up_fn_set_btn;
-    //ArrayList <User.User> lista;
+
     private User user1;
 
     private  int x = 0;
@@ -73,6 +73,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         dbref = FirebaseDatabase.getInstance().getReference("_users_");
         userId = user.getUid();
 
+
         refStorage = FirebaseStorage.getInstance().getReference("profile_pictures");
 
         //Toast.makeText(UserPage.this, " Userobject value : " + user.getEmail(), Toast.LENGTH_LONG).show();
@@ -83,6 +84,8 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         final TextView up_account_type = findViewById(R.id.up_account_type);
         final ImageView up_fn_set_btn = findViewById(R.id.up_fn_set_btn);
         final ImageView user_profile_picture = findViewById(R.id.profilePicture);
+        final ImageView up_ln_set_button = findViewById(R.id.up_ln_set_button);
+        final ImageView up_email_button = findViewById(R.id.up_email_button);
 
         //choose and upload 2 in 1
         choose_image =  findViewById(R.id.choose_image);
@@ -93,8 +96,11 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
 
         //setOnClickListener group start here
         up_fn_set_btn.setOnClickListener(this);
+        up_ln_set_button.setOnClickListener(this);
+        up_email_button.setOnClickListener(this);
         choose_image.setOnClickListener(this);
         //setOnClickListener group end here
+
 
 
         pbar.setVisibility(View.INVISIBLE); // we don't need it until we call the upload button
@@ -129,7 +135,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
                                             new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
-                                                    Toast.makeText(UserPage.this, "Your picture was succesfully uploaded in our database", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(UserPage.this, "Your picture was succesfully uploaded", Toast.LENGTH_LONG).show();
                                                 }
                                             }
                                     ).addOnFailureListener(new OnFailureListener() {
@@ -259,6 +265,43 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
     }
     //-----CHANGING FIRST NAME END--------------------------------------------------------------------------------------------
 
+    //-----CHANGING LAST NAME START HERE--------------------------------------------------------------------------------------
+    public void change_ln() {
+        EditText user_ln = findViewById(R.id.up_user_ln);
+        dbref.child(userId).child("lastname").setValue(user_ln.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful())
+                {
+                    Toast.makeText(UserPage.this, "You've just updated your lastname",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(UserPage.this, "There was an error. Please try again in 5 minutes", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+    //----CHANGING LAST NAME END HERE-------------------------------------------------------------------------------
+
+    //-- CHANGING EMAIL START HERE----------------------------------------------------------------------------------
+    public void change_email(){
+        EditText user_em = findViewById(R.id.up_user_email);
+        user.updateEmail(user_em.getText().toString().trim());
+        dbref.child(userId).child("email").setValue(user_em.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful())
+                {
+                    Toast.makeText(UserPage.this, "You've just updated your email, please login again", Toast.LENGTH_LONG).show();
+                    Button log_out = findViewById(R.id.up_logout);
+                    log_out.performClick();
+                    startActivity(new Intent(UserPage.this, Login.class));
+                }
+            }
+        });
+
+    }
+    //-- CHANGING EMAIL END HERE----------------------------------------------------------------------------------
 
     @Override
     public void onClick(View v) {
@@ -272,7 +315,13 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.choose_image:
                 choose_and_upload_profile_picture();
-
+                break;
+            case R.id.up_email_button:
+                change_email();
+                break;
+            case R.id.up_ln_set_button:
+                change_ln();
+                break;
         }
     }
 

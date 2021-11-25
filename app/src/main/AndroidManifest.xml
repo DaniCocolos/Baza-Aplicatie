@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
-            android:name=".Views.MainActivity"
+            android:name=".Restaurants"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,7 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".Restaurants"
+            android:name=".Views.add_restaurant"
             android:exported="false">
 
         </activity>

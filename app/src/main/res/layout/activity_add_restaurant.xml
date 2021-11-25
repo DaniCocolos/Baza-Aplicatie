@@ -45,10 +45,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="82dp" />
+        app:layout_constraintGuide_percent="0.124430954" />
 
     <EditText
-        android:id="@+id/et_add_restaurant"
+        android:id="@+id/et_add_restaurant_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -64,7 +64,7 @@
         tools:textColorHint="@color/sobolan" />
 
     <EditText
-        android:id="@+id/et_add_rest_add"
+        android:id="@+id/et_add_restaurant_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -76,20 +76,57 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_add_restaurant"
+        app:layout_constraintTop_toBottomOf="@+id/et_add_restaurant_name"
         tools:textColorHint="@color/sobolan" />
 
     <Button
-        android:id="@+id/btn_upload_iv_rest"
+        android:id="@+id/add_restaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:text="Picture"
+        android:layout_marginTop="160dp"
+        android:text="Add"
         app:backgroundTint="@color/orange"
         app:icon="@drawable/ic_upload"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_restaurant_image" />
+
+    <ImageView
+        android:id="@+id/add_restaurant_image"
+        android:layout_width="146dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="32dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_add_rest_add" />
+        app:layout_constraintTop_toBottomOf="@+id/et_add_restaurant_address"
+        app:srcCompat="@drawable/ic_baseline_image_search_24"
+        tools:ignore="VectorDrawableCompat" />
+
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="475dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="428dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="180dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

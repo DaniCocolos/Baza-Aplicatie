@@ -15,15 +15,15 @@
         android:padding="20dp">
 
         <ImageView
-            android:id=""
+            android:id="@+id/logo"
             android:layout_width="47dp"
             android:layout_height="47dp"
             android:layout_centerVertical="true"
             android:src="@drawable/logo_splh"
-            android:onClick=""/>
+            />
 
         <ImageView
-            android:id=""
+            android:id="@+id/search_button"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
@@ -32,7 +32,7 @@
             android:src="@drawable/ic_search" />
 
         <EditText
-            android:id=""
+            android:id="@+id/search_bar"
             android:layout_width="121dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -44,17 +44,17 @@
             android:textColorHint="@color/sobolan"
             android:textSize="12sp"
             android:textStyle="italic"
-            android:onClick=""/>
+            />
 
         <ImageView
-            android:id=""
+            android:id="@+id/menu_hamburger"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:padding="1dp"
             android:src="@drawable/ic_menu"
-            android:onClick=""/>
+            />
 
 
     </RelativeLayout>
@@ -64,7 +64,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id=""
+            android:id="@+id/rec_view2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white" />

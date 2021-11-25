@@ -219,8 +219,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
-
                 if (task.isSuccessful()) {
                     User user = new User(firstName, lastName, email, password, username, usertype, profilePicture);
                     FirebaseDatabase.getInstance().getReference("_users_").child(FirebaseAuth.
@@ -230,7 +228,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                             if (task.isSuccessful()) {
                                 Toast.makeText(RegisterUser.this, "Successfully registered.", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
-                                startActivity(new Intent(RegisterUser.this, Login.class));
+                                startActivity(new Intent(RegisterUser.this, SelectPage.class));
 
                             } else {
                                 Toast.makeText(RegisterUser.this, "Error occured: " + task.toString(), Toast.LENGTH_LONG).show();

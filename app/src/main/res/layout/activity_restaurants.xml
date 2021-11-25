@@ -14,24 +14,23 @@
         android:padding="20dp">
 
         <ImageView
-            android:id=""
+            android:id="@+id/logo"
             android:layout_width="47dp"
             android:layout_height="47dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/logo_splh"
-            android:onClick=""/>
+            android:src="@drawable/logo_splh" />
 
         <ImageView
-            android:id=""
+            android:id="@+id/search_icon"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="37dp"
-            android:src="@drawable/ic_search"/>
+            android:src="@drawable/ic_search" />
 
         <EditText
-            android:id=""
+            android:id="@+id/search_bar"
             android:layout_width="121dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -42,18 +41,16 @@
             android:textColor="@color/black"
             android:textColorHint="@color/sobolan"
             android:textSize="12sp"
-            android:textStyle="italic"
-            android:onClick=""/>
+            android:textStyle="italic" />
 
         <ImageView
-            android:id=""
+            android:id="@+id/menu_hamburger"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:padding="1dp"
-            android:src="@drawable/ic_menu"
-            android:onClick=""/>
+            android:src="@drawable/ic_menu" />
 
 
     </RelativeLayout>
@@ -63,7 +60,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id=""
+            android:id="@+id/rec_view1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white" />
