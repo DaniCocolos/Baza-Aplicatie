@@ -1,7 +1,5 @@
 package com.example.forfoodiesbyfoodies.Views;
 
-import static com.example.forfoodiesbyfoodies.R.id.home_restaurant_photo;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -14,8 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.forfoodiesbyfoodies.Adapters.RestaurantsList;
 import com.example.forfoodiesbyfoodies.R;
-import com.example.forfoodiesbyfoodies.Restaurants;
 import com.example.forfoodiesbyfoodies.Street_food;
 
 public class SelectPage extends AppCompatActivity implements View.OnClickListener {
@@ -56,7 +54,7 @@ public class SelectPage extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.home_restaurant_photo:
-                startActivity(new Intent(SelectPage.this, Restaurants.class));
+                startActivity(new Intent(SelectPage.this, RestaurantsList.class));
                 break;
             case R.id.home_streetfood_photo:
                 startActivity(new Intent(SelectPage.this, Street_food.class));

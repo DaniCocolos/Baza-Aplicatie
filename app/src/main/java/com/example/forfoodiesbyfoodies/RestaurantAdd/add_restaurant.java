@@ -1,10 +1,9 @@
-package com.example.forfoodiesbyfoodies.Views;
+package com.example.forfoodiesbyfoodies.RestaurantAdd;
 
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -17,11 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.forfoodiesbyfoodies.Models.Restaurant;
-import com.example.forfoodiesbyfoodies.Models.RestaurantsData;
 import com.example.forfoodiesbyfoodies.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,10 +27,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
-import java.util.Objects;
-import java.util.Random;
-import java.util.UUID;
 
 public class add_restaurant extends AppCompatActivity implements View.OnClickListener {
 
@@ -60,7 +52,7 @@ public class add_restaurant extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
         //initialize the firebase reference - storage and database where the restaurant details and photo are stored
-         dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
+         dbref = FirebaseDatabase.getInstance().getReference("RestaurantsList");
 
         refStorage = FirebaseStorage.getInstance().getReference("restaurant_photos");
         //-----------------------------------------------------------------------------------------------------------
@@ -105,9 +97,9 @@ public class add_restaurant extends AppCompatActivity implements View.OnClickLis
                             String restaurant_name = et_add_restaurant_name.getText().toString();
                             String restaurant_address = et_add_restaurant_address.getText().toString();
                             String url = uri.toString();
-                            Restaurant restaurant = new Restaurant( restaurant_name, restaurant_address, url);
+                            add_restaurant_object addrestaurantobject = new add_restaurant_object( restaurant_name, restaurant_address, url);
 
-                            dbref.child(id).setValue(restaurant).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            dbref.child(id).setValue(addrestaurantobject).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(add_restaurant.this, "Succesfully added", Toast.LENGTH_LONG).show();
@@ -155,9 +147,9 @@ public class add_restaurant extends AppCompatActivity implements View.OnClickLis
         String res_add = et_add_restaurant_address.getText().toString();
 
 
-        Restaurant restaurant = new Restaurant( res_name, res_add, url);
+        add_restaurant_object addrestaurantobject = new add_restaurant_object( res_name, res_add, url);
         String id = dbref.push().getKey();
-        dbref.child(id).setValue(restaurant).addOnCompleteListener(new OnCompleteListener<Void>() {
+        dbref.child(id).setValue(addrestaurantobject).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful())

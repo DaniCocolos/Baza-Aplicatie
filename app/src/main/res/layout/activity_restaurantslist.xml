@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_splh"
     android:orientation="vertical"
-    tools:context=".Restaurants">
+    tools:context=".Adapters.RestaurantsList">
 
     <RelativeLayout
         android:layout_width="match_parent"

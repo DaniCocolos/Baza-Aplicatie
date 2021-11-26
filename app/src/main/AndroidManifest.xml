@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
-            android:name=".Restaurants"
+            android:name=".Adapters.SelectedRestaurantPage"
+            android:exported="false" />
+        <activity
+            android:name=".Adapters.RestaurantsList"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,16 +38,14 @@
             android:exported="false" />
         <activity
             android:name=".Views.BookTable"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
-            android:name=".Views.add_restaurant"
-            android:exported="false">
+            android:name=".RestaurantAdd.add_restaurant"
+            android:exported="false"></activity>
+        <activity
+            android:name=".Views.ForgotPassword"
+            android:exported="false"></activity>
 
-        </activity>
-        <activity android:name=".Views.ForgotPassword"
-            android:exported="false">
-        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
