@@ -8,7 +8,7 @@ public class Image {
 
     }
     public Image( String url){
-       // this.name = name;
+        // this.name = name;
         this.url = url;
     }
 

@@ -66,4 +66,16 @@
     <string name="search_street_food">Search</string>
     <string name="resturant_name">Restaurant name</string>
     <string name="resturant_address">restaurant_address</string>
+    <string name="restaurant_name">RESTAURANT NAME</string>
+    <string name="adress">Adress</string>
+    <string name="description">description</string>
+    <string name="add_reviews">Add reviews</string>
+    <string name="view_reviews">View reviews</string>
+    <string name="this_is_the_menu">This is the menu</string>
+    <string name="search_input_text">Search input text</string>
+    <string name="location">Location</string>
+    <string name="restaurant_type">restaurant type</string>
+    <string name="please_enter_the_name_of_the_place">Please enter the name of the place</string>
+    <string name="name_of_the_restaurant">Name of the restaurant</string>
+    <string name="add">Add</string>
 </resources>

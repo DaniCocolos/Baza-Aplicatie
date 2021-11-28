@@ -3,6 +3,7 @@ package com.example.forfoodiesbyfoodies.Adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forfoodiesbyfoodies.R;
 import com.squareup.picasso.Picasso;
-
+import com.example.forfoodiesbyfoodies.Adapters.RestaurantsData;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.zip.Inflater;
 
 
-public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.Viewholder>{
+public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.Viewholder> {
 
     Context context;
     ArrayList<RestaurantsData> list_of_restaurants;
@@ -46,6 +47,7 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
         //Aici adaugam setText daca mai avem alte campuri, gen Vegetarian sau nu
         holder.object =  rest;
 
+
     }
 
     @Override
@@ -70,11 +72,34 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("demo" , "root.onClickListenerr: URL-> " + object.getRestaurant_address());
+                    Log.d("demo" , "Line - 74 - > URL-> " + object.getImage_url());
+                    Log.d("demo" , "Line - 73 - > NAME-> " + object.getRestaurant_name());
+                    Log.d("demo" , "Line - 73 - > ADDRESS-> " + object.getRestaurant_address());
+                    Log.d("demo" , "Line - 73 - > Rating-> " + object.getStars());
+                    Log.d("demo" , "Line - 73 - > Description-> " + object.getRestaurant_description());
+                    Log.d("demo" , "Line - 73 - > Type-> " + object.getFood_type());
+
+                    // Intent vi = new Intent( , SelectedRestaurantPage.class);
+
+                    //TODO AICI AM DEZACTIVAT TOT CE VEZI DEDESUPT
+                   Intent it = new Intent(v.getContext() , SelectedRestaurantPage.class);
+                    it.putExtra("Name", object.getRestaurant_name());
+                    it.putExtra("Address", object.getRestaurant_address());
+                    it.putExtra("URL", object.getImage_url());
+                    it.putExtra("Description", object.getRestaurant_description());
+                    it.putExtra("Rating", object.getStars());
+                    it.putExtra("Type", object.getFood_type());
+
+                   // it.putExtra("Obj", object.getClass());
+                    v.getContext().startActivity(it);
+
+
 
                 }
+
             });
             //Aici definim unde sunt locatiile de setText.
         }
     }
+
 }

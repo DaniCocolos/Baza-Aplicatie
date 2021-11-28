@@ -14,14 +14,14 @@
         android:padding="20dp">
 
         <ImageView
-            android:id="@+id/logo"
+            android:id="@+id/logo_add_restaurant"
             android:layout_width="47dp"
             android:layout_height="47dp"
             android:layout_centerVertical="true"
             android:src="@drawable/logo_splh" />
 
         <ImageView
-            android:id="@+id/search_icon"
+            android:id="@+id/search_icon_add_restaurant"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
@@ -30,7 +30,7 @@
             android:src="@drawable/ic_search" />
 
         <EditText
-            android:id="@+id/search_bar"
+            android:id="@+id/search_bar_from_add_restaurant"
             android:layout_width="121dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

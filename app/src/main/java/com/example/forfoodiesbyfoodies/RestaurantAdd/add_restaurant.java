@@ -52,9 +52,8 @@ public class add_restaurant extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
         //initialize the firebase reference - storage and database where the restaurant details and photo are stored
-         dbref = FirebaseDatabase.getInstance().getReference("RestaurantsList");
-
-        refStorage = FirebaseStorage.getInstance().getReference("restaurant_photos");
+         dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
+         refStorage = FirebaseStorage.getInstance().getReference("restaurant_photos");
         //-----------------------------------------------------------------------------------------------------------
 
         et_add_restaurant_name = findViewById(R.id.et_add_restaurant_name); // restaurant name
@@ -93,13 +92,21 @@ public class add_restaurant extends AppCompatActivity implements View.OnClickLis
                     reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            //TODO aici
+
                             String restaurant_name = et_add_restaurant_name.getText().toString();
                             String restaurant_address = et_add_restaurant_address.getText().toString();
-                            String url = uri.toString();
-                            add_restaurant_object addrestaurantobject = new add_restaurant_object( restaurant_name, restaurant_address, url);
+                           //String restaurant_type = et_add_restaurant_type.getText().toString();
+                           // String restaurant_description = et_add_restaurant_description.getText().toString();
+                            //TODO de adaugat in design pentru description si VEGETARIAN SAU NU o face tataie
 
-                            dbref.child(id).setValue(addrestaurantobject).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            String restaurant_description = "this is a very and complex description";
+                            String restaurant_type = "VEGETARIAN";
+
+                            final String restaurant_rating = "0";
+                            String url = uri.toString();
+                            add_restaurant_object obj = new add_restaurant_object( restaurant_name, restaurant_address, url, restaurant_description,restaurant_type,restaurant_rating);
+
+                            dbref.child(id).setValue(obj).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(add_restaurant.this, "Succesfully added", Toast.LENGTH_LONG).show();
@@ -123,45 +130,8 @@ public class add_restaurant extends AppCompatActivity implements View.OnClickLis
 
 
     }
-    // check if the restaurant name and address are words and it length is smaller than 3 are ok
-    public void check_inputs(String url) {
-        if (et_add_restaurant_name.getText().toString().length() < 3) {
-            et_add_restaurant_name.setError("Minimum 3 characters");
-            et_add_restaurant_name.requestFocus();
-            pbar.setVisibility(View.GONE);
-            return;
-        }
-        if (et_add_restaurant_address.getText().toString().length() < 3) {
-            et_add_restaurant_address.setError("Minimum 3 characters");
-            et_add_restaurant_address.requestFocus();
-            pbar.setVisibility(View.GONE);
-            return;
-        }
-        if (!image_checker)
-        {
-            //add_restaurant_image.setError();
-            Toast.makeText(getApplicationContext(), "Please upload a photo", Toast.LENGTH_LONG).show();
-            return;
-        }
-        String res_name = et_add_restaurant_name.getText().toString();
-        String res_add = et_add_restaurant_address.getText().toString();
 
 
-        add_restaurant_object addrestaurantobject = new add_restaurant_object( res_name, res_add, url);
-        String id = dbref.push().getKey();
-        dbref.child(id).setValue(addrestaurantobject).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful())
-                {
-                    Toast.makeText(getApplicationContext(), "succces " , Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-
-
-    }
 
     // check if the restaura END HERE---------------------------------------------------------------------------------------------
     // Script to choose photo from phone library START HERE-----------------------------------------------------------------------

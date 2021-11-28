@@ -14,34 +14,45 @@
         android:padding="20dp">
 
         <ImageView
-            android:id="@+id/logo"
+            android:id="@+id/logo_add_restaurant"
             android:layout_width="47dp"
             android:layout_height="47dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/logo_splh" />
+            android:contentDescription="@string/app_logo"
+            android:src="@drawable/logo_splh"
+            tools:ignore="ImageContrastCheck" />
 
         <ImageView
-            android:id="@+id/search_icon"
+            android:id="@+id/search_icon_add_restaurant"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
             android:layout_centerVertical="true"
             android:layout_marginRight="37dp"
-            android:src="@drawable/ic_search" />
+            android:layout_marginEnd="37dp"
+            android:src="@drawable/ic_search"
+            android:contentDescription="@string/search_input_text" />
 
         <EditText
-            android:id="@+id/search_bar"
+            android:id="@+id/search_bar_from_add_restaurant"
             android:layout_width="121dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="68dp"
             android:layout_marginRight="68dp"
             android:background="@drawable/edit_tetext_round"
             android:hint="@string/search_restaurants"
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/sobolan"
             android:textSize="12sp"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/menu_hamburger"
@@ -50,17 +61,210 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:padding="1dp"
-            android:src="@drawable/ic_menu" />
+            android:src="@drawable/ic_menu"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/this_is_the_menu"/>
 
 
     </RelativeLayout>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/srp_image_restaurant"
+            android:layout_width="162dp"
+            android:layout_height="123dp"
+            android:layout_marginTop="48dp"
+
+            android:contentDescription="@string/app_logo"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/srp_restaurant_name"
+            android:layout_width="185dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="@string/restaurant_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/srp_image_restaurant"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/srp_restaurant_type"
+            android:layout_width="185dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/restaurant_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/srp_image_restaurant"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/srp_restaurant_description"
+            android:layout_width="306dp"
+            android:layout_height="135dp"
+            android:layout_marginTop="41dp"
+            android:text="@string/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_address" />
 
 
+        <Button
+            android:id="@+id/srp_restaurant_reviews"
+            android:layout_width="120dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="14dp"
 
-    </ScrollView>
+            android:layout_marginEnd="126dp"
+            android:layout_marginRight="126dp"
+            android:background="#3B7F868A"
+            android:gravity="center"
+            android:text="@string/view_reviews"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toStartOf="@+id/srp_restaurant_add_review"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_rating">
 
+        </Button>
+
+        <Button
+            android:id="@+id/srp_restaurant_add_review"
+            android:layout_width="108dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="12dp"
+
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:background="#3B7F868A"
+            android:gravity="center"
+            android:text="@string/add_reviews"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_rating">
+
+        </Button>
+
+        <TextView
+            android:id="@+id/srp_restaurant_address"
+            android:layout_width="308dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:text="@string/location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView11"
+            app:layout_constraintTop_toBottomOf="@+id/srp_image_restaurant" />
+
+        <RatingBar
+            android:id="@+id/srp_restaurant_rating"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="115dp"
+            android:layout_marginLeft="115dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="115dp"
+            android:layout_marginRight="115dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_description" />
+
+        <Button
+            android:id="@+id/srp_restaurant_reservation"
+            android:layout_width="158dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="126dp"
+            android:layout_marginLeft="126dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="127dp"
+            android:layout_marginRight="127dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_term"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/reservation"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_reviews" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="7dp"
+            android:textStyle="bold
+"
+            android:text="@string/restaurant_type"
+            app:layout_constraintStart_toEndOf="@+id/srp_image_restaurant"
+            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_name" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="41dp"
+            android:layout_marginEnd="93dp"
+            android:layout_marginRight="93dp"
+            android:text="@string/restaurant_name"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/srp_image_restaurant"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="63dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginLeft="29dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:text="Location: "
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/srp_restaurant_address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/srp_image_restaurant" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

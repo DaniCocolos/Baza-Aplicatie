@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
-            android:name=".Adapters.SelectedRestaurantPage"
+            android:name=".Views.Login"
             android:exported="false" />
         <activity
             android:name=".Adapters.RestaurantsList"
@@ -34,17 +34,17 @@
             android:name=".Views.RegisterUser"
             android:exported="false" />
         <activity
-            android:name=".Views.Login"
+            android:name=".Adapters.SelectedRestaurantPage"
             android:exported="false" />
         <activity
             android:name=".Views.BookTable"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".RestaurantAdd.add_restaurant"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".Views.ForgotPassword"
-            android:exported="false"></activity>
+            android:exported="false"/>
 
         <meta-data
             android:name="preloaded_fonts"
