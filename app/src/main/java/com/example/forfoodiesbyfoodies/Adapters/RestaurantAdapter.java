@@ -104,6 +104,7 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
                     it.putExtra("Description", object.getRestaurant_description());
                     it.putExtra("Rating", object.getStars());
                     it.putExtra("Type", object.getFood_type());
+                    it.putExtra("URL_OPENTABLE", object.getUrl_opentable());
 
                    // it.putExtra("Obj", object.getClass());
                     v.getContext().startActivity(it);

@@ -46,7 +46,7 @@
         android:background="@drawable/bg_calendar" />
 
     <ImageView
-        android:id="@+id/up_fn_set_btn"
+        android:id="@+id/bk_restaurant_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"

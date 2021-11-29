@@ -78,4 +78,5 @@
     <string name="please_enter_the_name_of_the_place">Please enter the name of the place</string>
     <string name="name_of_the_restaurant">Name of the restaurant</string>
     <string name="add">Add</string>
+    <string name="i_agree">I agree</string>
 </resources>
