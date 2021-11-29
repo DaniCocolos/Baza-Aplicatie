@@ -188,6 +188,7 @@
         <RatingBar
             android:id="@+id/srp_restaurant_rating"
             style="?android:attr/ratingBarStyleIndicator"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="115dp"

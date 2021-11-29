@@ -3,6 +3,7 @@ package com.example.forfoodiesbyfoodies.Adapters;
 import static com.example.forfoodiesbyfoodies.R.layout.activity_restaurantslist;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,7 +56,7 @@ public class RestaurantsList extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getApplicationContext(), "There was an error: " + error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 

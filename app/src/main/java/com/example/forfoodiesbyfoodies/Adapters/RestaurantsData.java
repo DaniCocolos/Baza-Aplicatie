@@ -9,15 +9,17 @@ public class RestaurantsData {
      String restaurant_description;
      String food_type;
      String stars;
+     String url_opentable;
 
 
-    public RestaurantsData(String restaurant_name, String restaurant_address, String image_url, String restaurant_description, String food_type, String stars) {
+    public RestaurantsData(String restaurant_name, String restaurant_address, String image_url, String restaurant_description, String food_type, String stars,String url_opentable) {
         this.restaurant_name = restaurant_name;
         this.restaurant_address = restaurant_address;
         this.image_url = image_url;
         this.restaurant_description = restaurant_description;
         this.food_type = food_type;
         this.stars = stars;
+        this.url_opentable = url_opentable;
     }
     //default constructor
     public RestaurantsData(){
@@ -48,6 +50,8 @@ public class RestaurantsData {
         this.image_url = image_url;
     }
 
+
+
     public String getRestaurant_description() {
         return restaurant_description;
     }
@@ -72,6 +76,12 @@ public class RestaurantsData {
         this.stars = stars;
     }
 
+    public String getUrl_opentable() {
+        return url_opentable;
+    }
 
+    public void setUrl_opentable(String url_opentable) {
+        this.url_opentable = url_opentable;
+    }
 
 }

@@ -57,17 +57,19 @@ public class SelectedRestaurantPage extends AppCompatActivity {
         //Button declaration end here --------------------------------------------------------------
 
 
-        //get data from intent or get object.. maybe is better with object start here ------------------------------
-        // TODO try by parsing object through intent
+
+
         Intent it = getIntent();
         String name = it.getStringExtra("Name");
         String address = it.getStringExtra("Address");
         String photo = it.getStringExtra("URL");
+        String url_rest = it.getStringExtra("URL_OPENTABLE");
+
+
         //Integer stars = it.getIntArrayExtra("Rating");
         String stars = it.getStringExtra("Rating");
         // TODO SI AICI AM SA VAD CUM PLM FAC CA SA FAC RATING-UL
-        //Integer int1 = Integer.valueOf(stars);
-        //Integer rating = Integer.valueOf(stars);
+        Integer rating = Integer.parseInt(stars);
         String description = it.getStringExtra("Description");
         String food_type = it.getStringExtra("Type");
 
@@ -75,11 +77,12 @@ public class SelectedRestaurantPage extends AppCompatActivity {
         restaurant_name.setText(name);
         restaurant_address.setText(address);
         restaurant_description.setText(description);
-       // restaurant_stars.setNumStars(int1);
+
 
         restaurant_type.setText(food_type);
         Picasso.get().load(photo).into(restaurant_image);
-
+        //restaurant_stars.setNumStars(rating);
+        restaurant_stars.setRating(Float.parseFloat(stars));
 
 
     }
