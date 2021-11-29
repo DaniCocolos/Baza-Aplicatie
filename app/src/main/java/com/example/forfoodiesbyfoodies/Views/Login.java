@@ -136,7 +136,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 if (task.isSuccessful()) {
                     Toast.makeText(Login.this, "You will be redirected to home page", Toast.LENGTH_SHORT).show();
                     // redirect to user profile or another page
-                    startActivity(new Intent(Login.this, UserPage.class));
+                    startActivity(new Intent(Login.this, SelectPage.class));
                 }//TODO aici sunt pentru a afisa eroare daca email exista in baza noastra de date
                 else {
                     Toast.makeText(Login.this, "Login failed, please try again: " + task, Toast.LENGTH_SHORT).show();

@@ -41,6 +41,7 @@ public class RestaurantsList extends AppCompatActivity {
         list_of_restaurants = new ArrayList<>();
         myAdapter = new RestaurantAdapter(this, list_of_restaurants);
         rec_view.setAdapter(myAdapter);
+        myAdapter.getItemCount();
 
         dbref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

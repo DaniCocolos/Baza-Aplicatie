@@ -42,7 +42,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
+public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
     FirebaseAuth mAuth;
     DatabaseReference dbref;
     EditText editTextFirstName, editTextLastName, editTextUserName, editTextemail, editTextpw, editTextcpw;

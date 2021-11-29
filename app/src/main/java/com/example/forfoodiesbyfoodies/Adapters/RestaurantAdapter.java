@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +38,8 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
     public RestaurantAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // to inflate the layout for each item of recycler view.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurants_card_layout, parent, false);
+        view.setVisibility(View.VISIBLE);
+
         return new Viewholder(view);
     }
 
@@ -47,10 +51,11 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
         holder.restaurant_type.setText(rest.getFood_type());
 
 
+
         float rating = Float.parseFloat(rest.getStars());
         float g = 5 - rating;
         holder.restaurant_rating.setRating(g);
-
+        holder.restaurant_rating.setStepSize(0.5F);
         Picasso.get().load(list_of_restaurants.get(position).getImage_url()).fit().into(holder.restaurant_image);
         //Aici adaugam setText daca mai avem alte campuri, gen Vegetarian sau nu
         holder.object =  rest;
