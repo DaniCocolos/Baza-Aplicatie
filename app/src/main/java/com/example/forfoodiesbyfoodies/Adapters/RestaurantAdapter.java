@@ -18,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forfoodiesbyfoodies.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,6 +30,9 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
     Context context;
     ArrayList<RestaurantsData> list_of_restaurants;
     RestaurantsData object;
+
+
+
     // Constructor
     public RestaurantAdapter( Context context, ArrayList<RestaurantsData> list_of_restaurants) {
         this.list_of_restaurants = list_of_restaurants;
@@ -45,6 +50,7 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
+
         RestaurantsData rest= list_of_restaurants.get(position);
         holder.restaurant_name.setText(rest.getRestaurant_name());
         holder.restaurant_address.setText(rest.getRestaurant_address());

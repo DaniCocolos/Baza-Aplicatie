@@ -79,4 +79,8 @@
     <string name="name_of_the_restaurant">Name of the restaurant</string>
     <string name="add">Add</string>
     <string name="i_agree">I agree</string>
+    <string name="restaurantphoto">restaurantphoto</string>
+    <string name="photo">photo</string>
+    <string name="street_food_name">Street Food Name</string>
+    <string name="address">Address</string>
 </resources>

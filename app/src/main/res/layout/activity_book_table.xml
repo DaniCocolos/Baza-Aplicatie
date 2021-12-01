@@ -48,10 +48,12 @@
     <ImageView
         android:id="@+id/bk_restaurant_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="-70dp"
+        android:layout_marginTop="0dp"
+
         android:layout_marginEnd="0dp"
-        app:srcCompat="@drawable/banner_calendar" />
+        android:adjustViewBounds="true"
+        android:scaleType="center" />
 
 </RelativeLayout>

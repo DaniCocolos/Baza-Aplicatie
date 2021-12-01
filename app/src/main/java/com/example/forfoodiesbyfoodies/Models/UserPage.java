@@ -108,100 +108,100 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
 
         // UPLOAD IMAGE TO THE STORAGE AND UPDATE THE profilePicture in the realtime dbs START HERE ----------------------------
         up_button_upload.setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                @Override
-                public void onClick(View v) {
-                    pbar.setVisibility(View.VISIBLE); // let the progress bar to be visible
-                    //pbar.setProgressTintList(ColorStateList.valueOf (Color.GREEN));
-                    pbar.setBackgroundColor(Color.GREEN);
-                    if (x == 0)
-                    {
-                        x++;
-                        up_button_upload.callOnClick();
-                        return;
-                    }
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) {
+                pbar.setVisibility(View.VISIBLE); // let the progress bar to be visible
+                //pbar.setProgressTintList(ColorStateList.valueOf (Color.GREEN));
+                pbar.setBackgroundColor(Color.GREEN);
+                if (x == 0)
+                {
+                    x++;
+                    up_button_upload.callOnClick();
+                    return;
+                }
                 StorageReference reference = refStorage.child(userId.toString() +getExtension(imageUrl));
-                    reference.putFile(imageUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Toast.makeText(UserPage.this, "Your profile picture was updated!", Toast.LENGTH_LONG).show();
-                            pbar.setVisibility(View.GONE);
-                            reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    //Image image = new Image( uri.toString());
-                                    //dbref.child(userId).setValue(image);
-                                    dbref.child(userId).child("profilePicture").setValue(uri.toString()).addOnCompleteListener(
-                                            new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    Toast.makeText(UserPage.this, "Your picture was succesfully uploaded", Toast.LENGTH_LONG).show();
-                                                }
+                reference.putFile(imageUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(UserPage.this, "Your profile picture was updated!", Toast.LENGTH_LONG).show();
+                        pbar.setVisibility(View.GONE);
+                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                //Image image = new Image( uri.toString());
+                                //dbref.child(userId).setValue(image);
+                                dbref.child(userId).child("profilePicture").setValue(uri.toString()).addOnCompleteListener(
+                                        new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(UserPage.this, "Your picture was succesfully uploaded", Toast.LENGTH_LONG).show();
                                             }
-                                    ).addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(UserPage.this, "There was an error: " + e.toString(), Toast.LENGTH_SHORT).show();
                                         }
-                                    });
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(UserPage.this, "Error for getting the download url: " + e.toString(), Toast.LENGTH_LONG).show();
-                                }
-                            });
+                                ).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(UserPage.this, "There was an error: " + e.toString(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(UserPage.this, "Error for getting the download url: " + e.toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
 
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(UserPage.this, "Error: " +e.toString(), Toast.LENGTH_LONG).show();
-                            pbar.setVisibility(View.GONE);
-                        }
-                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                            double progress = (100 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
-                            pbar.setProgress((int)progress);
-                        }
-                    });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(UserPage.this, "Error: " +e.toString(), Toast.LENGTH_LONG).show();
+                        pbar.setVisibility(View.GONE);
+                    }
+                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                        double progress = (100 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
+                        pbar.setProgress((int)progress);
+                    }
+                });
 
 
-                                            }
-                                            });
+            }
+        });
         // UPLOAD IMAGE TO THE STORAGE AND UPDATE THE profilePicture in the realtime dbs END HERE -------------------------------------------------
 
 
-                //showing User details: fn, ln, email and profile pic START HERE-------------------------------------------------------------------
-                dbref.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        User user = snapshot.getValue(User.class);
-                        if (user != null) {
-                            String fn = user.getFirstname();
-                            String ln = user.getLastname();
-                            String email = user.getEmail();
-                            String userType = user.getUsertype();
-                            String profilePicture = user.getProfilePicture();
+        //showing User details: fn, ln, email and profile pic START HERE-------------------------------------------------------------------
+        dbref.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if (user != null) {
+                    String fn = user.getFirstname();
+                    String ln = user.getLastname();
+                    String email = user.getEmail();
+                    String userType = user.getUsertype();
+                    String profilePicture = user.getProfilePicture();
 
-                            Picasso.get().load(profilePicture).into(user_profile_picture);
-                            user_fn.setText(fn);
-                            user_ln.setText(ln);
-                            user_email.setText(email);
-                            up_account_type.setText(userType);
-                            // Toast.makeText(getApplicationContext(), "User-type: " + userType, Toast.LENGTH_SHORT).show();
+                    Picasso.get().load(profilePicture).into(user_profile_picture);
+                    user_fn.setText(fn);
+                    user_ln.setText(ln);
+                    user_email.setText(email);
+                    up_account_type.setText(userType);
+                    // Toast.makeText(getApplicationContext(), "User-type: " + userType, Toast.LENGTH_SHORT).show();
 
-                        }
+                }
 
-                    }
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(UserPage.this, "There was an error: " + error, Toast.LENGTH_SHORT).show();
-                    }
-                    });
-                //showing User details END HERE-----------------------------------------------------------------------------------------
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(UserPage.this, "There was an error: " + error, Toast.LENGTH_SHORT).show();
+            }
+        });
+        //showing User details END HERE-----------------------------------------------------------------------------------------
 
 
     } //  <-- this is for onCreate
@@ -213,12 +213,12 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         ContentResolver resolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
 
-    //        if (imageUrl != null)
-    //        {
-    //        StorageReference sref =  refStorage.child(userId.toString()+mime.getExtensionFromMimeType(resolver.getType(uri)));
-    //
-    //        }
-    return mime.getExtensionFromMimeType(resolver.getType(uri));
+        //        if (imageUrl != null)
+        //        {
+        //        StorageReference sref =  refStorage.child(userId.toString()+mime.getExtensionFromMimeType(resolver.getType(uri)));
+        //
+        //        }
+        return mime.getExtensionFromMimeType(resolver.getType(uri));
     }
     //return Extension part from image selected by user END HERE-----------------------------------------------------------------
 

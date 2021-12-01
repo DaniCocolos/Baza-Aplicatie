@@ -76,7 +76,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         String stars = it.getStringExtra("Rating");
         // TODO SI AICI AM SA VAD CUM PLM FAC CA SA FAC RATING-UL
         float rating = Float.parseFloat(stars);
-        //float g = 5 - rating + 1;
+        float g =  -5 -rating;
 
         String description = it.getStringExtra("Description");
         String food_type = it.getStringExtra("Type");
@@ -85,7 +85,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         restaurant_name.setText(name);
         restaurant_address.setText(address);
         restaurant_description.setText(description);
-        restaurant_stars.setRating(rating);
+        restaurant_stars.setRating(g);
         restaurant_type.setText(food_type);
         Picasso.get().load(photo).into(restaurant_image);  // restaurant picture
         //restaurant_stars.setNumStars(rating);

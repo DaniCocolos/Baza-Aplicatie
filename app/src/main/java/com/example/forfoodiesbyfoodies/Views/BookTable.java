@@ -53,10 +53,10 @@ public class BookTable extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isDateSelected) {
-                    Log.d("tag", reservation_date);
+                    //Log.d("tag", reservation_date);
                     String opentable = it.getStringExtra("url_opentable");
                     opentable = opentable.replace("$data", reservation_date);
-                    Log.d("tag", opentable);
+                   // Log.d("tag", opentable);
                     Uri uri = Uri.parse(opentable);
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
@@ -70,23 +70,11 @@ public class BookTable extends AppCompatActivity {
 
 
         //Add listener in calendar with a method to get the value of days,month and years
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-
-            //TODO - change the position for the toast message on top of the "Book a table" button
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Selected Date: " + dayOfMonth + "/" + (month + 1) + "/" + year, Toast.LENGTH_SHORT);
-
-                toast.show();
-
-                String url_opentable = it.getStringExtra("url_opentable");
-
-                url_opentable.replace("thisshouldbecanged", "year" +"-"+month++ +"-"+dayOfMonth);
-                 reservation_date = year + "-" + month + "-" + dayOfMonth;
+        //TODO - change the position for the toast message on top of the "Book a table" button
+        calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+                reservation_date = year + "-" + (month + 1) + "-" + dayOfMonth;
                 isDateSelected = true;
 
-            }
         });
     }
 

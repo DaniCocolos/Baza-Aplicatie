@@ -41,9 +41,9 @@ public class RestaurantsList extends AppCompatActivity {
         list_of_restaurants = new ArrayList<>();
         myAdapter = new RestaurantAdapter(this, list_of_restaurants);
         rec_view.setAdapter(myAdapter);
-        myAdapter.getItemCount();
 
-        dbref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        dbref.orderByChild("restaurant_name").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){

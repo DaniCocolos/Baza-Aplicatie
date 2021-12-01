@@ -32,7 +32,7 @@ public class add_restaurant extends AppCompatActivity implements View.OnClickLis
 
 
     private static final Object P = "TAG";
-     private DatabaseReference dbref;
+    private DatabaseReference dbref;
     private FirebaseUser user;
     private StorageReference refStorage;
 
@@ -52,8 +52,8 @@ public class add_restaurant extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
         //initialize the firebase reference - storage and database where the restaurant details and photo are stored
-         dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
-         refStorage = FirebaseStorage.getInstance().getReference("restaurant_photos");
+        dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
+        refStorage = FirebaseStorage.getInstance().getReference("restaurant_photos");
         //-----------------------------------------------------------------------------------------------------------
 
         et_add_restaurant_name = findViewById(R.id.et_add_restaurant_name); // restaurant name
@@ -79,49 +79,49 @@ public class add_restaurant extends AppCompatActivity implements View.OnClickLis
         });
 
 
-    upload.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            String id = dbref.push().getKey();
-            StorageReference reference = refStorage.child(id+"." + getExtension(imageUrl));
-            reference.putFile(imageUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_SHORT).show();
-                    pbar.setVisibility(View.GONE);
-                    reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = dbref.push().getKey();
+                StorageReference reference = refStorage.child(id+"." + getExtension(imageUrl));
+                reference.putFile(imageUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_SHORT).show();
+                        pbar.setVisibility(View.GONE);
+                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
 
-                            String restaurant_name = et_add_restaurant_name.getText().toString();
-                            String restaurant_address = et_add_restaurant_address.getText().toString();
-                           //String restaurant_type = et_add_restaurant_type.getText().toString();
-                           // String restaurant_description = et_add_restaurant_description.getText().toString();
-                            //TODO de adaugat in design pentru description si VEGETARIAN SAU NU o face tataie
+                                String restaurant_name = et_add_restaurant_name.getText().toString();
+                                String restaurant_address = et_add_restaurant_address.getText().toString();
+                                //String restaurant_type = et_add_restaurant_type.getText().toString();
+                                // String restaurant_description = et_add_restaurant_description.getText().toString();
+                                //TODO de adaugat in design pentru description si VEGETARIAN SAU NU o face tataie
 
-                            String restaurant_description = "this is a very and complex description";
-                            String restaurant_type = "VEGETARIAN";
+                                String restaurant_description = "this is a very and complex description";
+                                String restaurant_type = "VEGETARIAN";
 
-                            final String restaurant_rating = "0";
-                            String url = uri.toString();
-                            add_restaurant_object obj = new add_restaurant_object( restaurant_name, restaurant_address, url, restaurant_description,restaurant_type,restaurant_rating);
+                                final String restaurant_rating = "0";
+                                String url = uri.toString();
+                                add_restaurant_object obj = new add_restaurant_object( restaurant_name, restaurant_address, url, restaurant_description,restaurant_type,restaurant_rating);
 
-                            dbref.child(id).setValue(obj).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(add_restaurant.this, "Succesfully added", Toast.LENGTH_LONG).show();
-                                    Intent i = getIntent();
-                                    finish();
-                                    startActivity(i);
-                                }
-                            }).addOnFailureListener(e -> Toast.makeText(add_restaurant.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show());
-                        }
-                    }).addOnFailureListener(e -> Toast.makeText(add_restaurant.this,"Error", Toast.LENGTH_LONG).show());
+                                dbref.child(id).setValue(obj).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(add_restaurant.this, "Succesfully added", Toast.LENGTH_LONG).show();
+                                        Intent i = getIntent();
+                                        finish();
+                                        startActivity(i);
+                                    }
+                                }).addOnFailureListener(e -> Toast.makeText(add_restaurant.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show());
+                            }
+                        }).addOnFailureListener(e -> Toast.makeText(add_restaurant.this,"Error", Toast.LENGTH_LONG).show());
 
-                }
-            }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), "error: getDownloadUrl -> " +e.toString(), Toast.LENGTH_LONG).show());
-        }
-    });
+                    }
+                }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), "error: getDownloadUrl -> " +e.toString(), Toast.LENGTH_LONG).show());
+            }
+        });
 
 
 

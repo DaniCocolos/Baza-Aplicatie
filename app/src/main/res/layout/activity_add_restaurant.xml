@@ -7,74 +7,65 @@
     android:background="@drawable/background_splh"
     tools:context=".RestaurantAdd.add_restaurant">
 
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="74dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logo_splh" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="255dp"
-        android:layout_marginLeft="255dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.181"
-        app:srcCompat="@drawable/ic_menu"
-        tools:ignore="VectorDrawableCompat" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.124430954" />
+        <ImageView
+            android:id="@+id/logo_add_restaurant"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_logo"
+            android:src="@drawable/logo_splh"
+            tools:ignore="ImageContrastCheck" />
+
+        <ImageView
+            android:id="@+id/menu_hamburger"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/this_is_the_menu"
+            android:padding="1dp"
+            android:src="@drawable/ic_menu" />
+
+
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/et_add_restaurant_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Restaurant Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         tools:textColorHint="@color/sobolan" />
 
     <EditText
         android:id="@+id/et_add_restaurant_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Restaurant Address"
+        android:hint="Location"
         android:inputType="textPostalAddress"
         android:minHeight="48dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar3"
         tools:textColorHint="@color/sobolan" />
@@ -83,25 +74,26 @@
         android:id="@+id/add_restaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="24dp"
         android:text="@string/add"
         app:backgroundTint="@color/orange"
         app:icon="@drawable/ic_upload"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_restaurant_image" />
-
-    <ImageView
-        android:id="@+id/add_restaurant_image"
-        android:layout_width="146dp"
-        android:layout_height="108dp"
-        android:layout_marginTop="32dp"
-        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/upload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_add_restaurant_address"
+        app:layout_constraintTop_toBottomOf="@+id/add_restaurant_image" />
+
+
+    <ImageView
+        android:id="@+id/add_restaurant_image"
+        android:layout_width="177dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
         app:srcCompat="@drawable/ic_baseline_image_search_24"
         tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck" />
 
@@ -110,19 +102,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="475dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Description"
+        android:textColorHint="@color/sobolan"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_add_restaurant_address" />
 
     <ProgressBar
         android:id="@+id/progressBar3"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="180dp"
         android:layout_marginRight="180dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_add_restaurant_name" />
+
+    <CheckBox
+        android:id="@+id/chip4"
+        android:layout_width="33dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/progressBar3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_add_restaurant_name" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Vegetarian"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/chip4"
+        app:layout_constraintTop_toBottomOf="@+id/et_add_restaurant_name" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
