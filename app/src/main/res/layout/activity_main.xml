@@ -39,5 +39,3 @@
         app:layout_constraintTop_toBottomOf="@+id/im_logo"
         app:layout_constraintVertical_bias="0.004" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

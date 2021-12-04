@@ -15,7 +15,6 @@ public class add_street_food_object {
         this.image = image;
         this.type = type;
         this.description = description;
-
         this.userid= userid;
 
     }

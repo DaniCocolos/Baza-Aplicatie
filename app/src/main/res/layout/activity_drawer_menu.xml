@@ -5,21 +5,17 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".drawer_menu"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginTop="98dp"
         android:layout_gravity="end"
         android:background="@color/sobolan"
-        app:headerLayout="@layout/menu_header"
-        app:menu="@menu/mainmenu" />
-    <!--android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="150dp"-->
+        app:menu="@menu/mainmenu"/>
 
 
     <LinearLayout
@@ -31,17 +27,54 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <ImageView
+
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/logo_splh" />
+
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="37dp"
+                android:src="@drawable/ic_search"/>
+
+            <EditText
+
+                android:layout_width="139dp"
+                android:layout_height="29dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="75dp"
+                android:background="@drawable/edit_tetext_round"
+                android:gravity="center"
+                android:hint="@string/search"
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/sobolan"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <ImageView
+                android:id="@+id/menu_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="1dp"
+                android:src="@drawable/ic_menu" />
+
 
         </RelativeLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </ScrollView>
 
     </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
-

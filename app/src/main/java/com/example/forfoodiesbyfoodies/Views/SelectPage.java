@@ -39,6 +39,7 @@ public class SelectPage extends AppCompatActivity implements View.OnClickListene
         TextView textView8 = findViewById(R.id.textView8);
         String text = "Please visit our forum";
         SpannableString ss1 = new SpannableString(text);
+        textView8.setTextSize(18);
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View v) {
@@ -90,7 +91,6 @@ public class SelectPage extends AppCompatActivity implements View.OnClickListene
             if (firebaseAuth.getCurrentUser() == null)
             {
                 startActivity(new Intent(SelectPage.this, Login.class));
-                return;
             }
     }
 }

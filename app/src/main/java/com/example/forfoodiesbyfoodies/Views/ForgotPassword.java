@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+//sending to the user an password email reset
 public class ForgotPassword extends AppCompatActivity implements View.OnClickListener {
 
     EditText email;
@@ -33,8 +35,6 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         prog_bar = (ProgressBar) findViewById(R.id.progressBar2);
         sendButon.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
-
-
     }
 
     public void reset_passwod() {

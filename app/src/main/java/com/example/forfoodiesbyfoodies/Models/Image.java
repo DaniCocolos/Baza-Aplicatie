@@ -1,5 +1,6 @@
 package com.example.forfoodiesbyfoodies.Models;
 
+//class object created for user profile picture
 public class Image {
 
     private String name, url;

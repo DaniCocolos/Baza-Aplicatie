@@ -1,5 +1,7 @@
 package com.example.forfoodiesbyfoodies.RestaurantAdd;
 
+
+//class object created for adding a restaurant to the database, this class is just for the admin, no other users can see it
 public class add_restaurant_object {
     private String restaurant_name;
     private String restaurant_address;

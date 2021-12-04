@@ -58,12 +58,12 @@
             android:id="@+id/menu_hamburger"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:contentDescription="@string/this_is_the_menu"
             android:padding="1dp"
-            android:src="@drawable/ic_menu"
-            android:layout_alignParentEnd="true"
-            android:contentDescription="@string/this_is_the_menu"/>
+            android:src="@drawable/ic_menu" />
 
 
     </RelativeLayout>
@@ -137,18 +137,15 @@
             android:id="@+id/srp_restaurant_reviews"
             android:layout_width="120dp"
             android:layout_height="28dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="12dp"
 
-            android:layout_marginEnd="126dp"
-            android:layout_marginRight="126dp"
             android:background="#3B7F868A"
             android:gravity="center"
             android:text="@string/view_reviews"
             android:textAlignment="center"
             android:textAllCaps="true"
-            app:layout_constraintEnd_toStartOf="@+id/srp_restaurant_add_review"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_rating">
 
@@ -160,22 +157,22 @@
             android:layout_height="28dp"
             android:layout_marginTop="12dp"
 
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
             android:background="#3B7F868A"
             android:gravity="center"
             android:text="@string/add_reviews"
             android:textAlignment="center"
             android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.891"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_rating">
 
         </Button>
 
         <TextView
             android:id="@+id/srp_restaurant_address"
-            android:layout_width="308dp"
-            android:layout_height="22dp"
+            android:layout_width="283dp"
+            android:layout_height="23dp"
             android:layout_marginStart="7dp"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="24dp"

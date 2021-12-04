@@ -83,4 +83,6 @@
     <string name="photo">photo</string>
     <string name="street_food_name">Street Food Name</string>
     <string name="address">Address</string>
+    <string name="search">Search</string>
+    <string name="floating_button_open_popup_for_entering_topic_text">floating button open popup for entering topic text</string>
 </resources>

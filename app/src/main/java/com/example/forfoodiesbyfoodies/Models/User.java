@@ -1,5 +1,7 @@
 package com.example.forfoodiesbyfoodies.Models;
 
+//class object created for user profile
+
 public class User {
 
 

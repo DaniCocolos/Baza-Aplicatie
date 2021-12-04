@@ -41,7 +41,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
     FirebaseAuth mAuth;
     DatabaseReference dbref;
@@ -134,9 +134,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
     //------------------------------------------------------------------------------------------
 
-    public void registerUser() {
 
-    }
 
     @Override
     public void onClick(View v) {
@@ -196,7 +194,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             editTextemail.requestFocus();
             return;
         }
-
+            //checking if
         if (password.isEmpty() | password.length() < 6) {
             editTextpw.setError("Password is required. Minimum 6 characters");
             editTextpw.requestFocus();
@@ -215,7 +213,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         }
 
         progressBar.setVisibility(View.VISIBLE);
-
+        //firstly create user in firebase authentification.. if this is succesfully then register the user in the realtime database
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -241,7 +239,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                 }
             }
 
-
+            //checking exception from the Firebase to see if the email is in use or others code errors
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -302,7 +300,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
     }
 
 
-} // this is for the begin
+} // this is for the first bracket begin
 
 
 

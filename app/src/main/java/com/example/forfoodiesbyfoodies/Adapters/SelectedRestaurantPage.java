@@ -1,36 +1,44 @@
 package com.example.forfoodiesbyfoodies.Adapters;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.media.RatingCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.forfoodiesbyfoodies.Models.User;
 import com.example.forfoodiesbyfoodies.R;
+import com.example.forfoodiesbyfoodies.Reviews.add_review;
+import com.example.forfoodiesbyfoodies.Reviews.view_reviews;
 import com.example.forfoodiesbyfoodies.Views.BookTable;
+import com.example.forfoodiesbyfoodies.Views.Login;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 public class SelectedRestaurantPage extends AppCompatActivity implements View.OnClickListener {
-    TextView restaurant_name, restaurant_description,restaurant_type, restaurant_address;
+    TextView restaurant_name, restaurant_description, restaurant_type, restaurant_address;
     ImageView restaurant_image;
     Button button_view_reviews, button_add_reviews, button_reservation;
     RatingBar restaurant_stars;
 
-    RestaurantsData restaurant;
-
-
-    //TODO think about this, having the dbs here maybe not neccesary here and maybe is in the next page calendar after pressing button
-    FirebaseDatabase dbref;
+    DatabaseReference dbref;
     FirebaseAuth mAuth;
 
 
@@ -38,6 +46,30 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_restaurant_page);
+
+        //getting the current user ID
+        mAuth = FirebaseAuth.getInstance();
+
+        dbref = FirebaseDatabase.getInstance().getReference("_users_");
+        String userid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid(); //
+        //Log.d("userid", "userid is -->> " + userid);
+
+        dbref.child(userid).child("usertype").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (Objects.requireNonNull(snapshot.getValue()).toString().equals("normal")) {
+                    button_add_reviews.setVisibility(View.GONE);
+                    button_view_reviews.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         //Textviews for restaurant details start here-----------------------------------------------
         restaurant_name = findViewById(R.id.srp_restaurant_name);
@@ -53,12 +85,13 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
 
 
         //Button declaration start here ------------------------------------------------------------
-        button_view_reviews= findViewById(R.id.srp_restaurant_reviews);
+        button_view_reviews = findViewById(R.id.srp_restaurant_reviews);
         button_add_reviews = findViewById(R.id.srp_restaurant_add_review);
         button_reservation = findViewById(R.id.srp_restaurant_reservation);
         //Button declaration end here --------------------------------------------------------------
         button_reservation.setOnClickListener(this);
-
+        button_view_reviews.setOnClickListener(this);
+        button_add_reviews.setOnClickListener(this);
 
 
         Intent it = getIntent();
@@ -68,7 +101,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         String url_rest = it.getStringExtra("URL_OPENTABLE");
 
         //TODO url_rest este url pentru opentable, si modifica ce este in interiorul linkul cu data aleasa de user
-       // url_rest = url_rest.replace("thisshouldbecanged", "data_selected_by_user");
+        // url_rest = url_rest.replace("thisshouldbecanged", "data_selected_by_user");
         Log.d("demo", "URL-> " + url_rest);
         //--------------------------------------------------------------------------------------------------------
 
@@ -76,7 +109,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         String stars = it.getStringExtra("Rating");
         // TODO SI AICI AM SA VAD CUM PLM FAC CA SA FAC RATING-UL
         float rating = Float.parseFloat(stars);
-        float g =  -5 -rating;
+        float g = -5 - rating;
 
         String description = it.getStringExtra("Description");
         String food_type = it.getStringExtra("Type");
@@ -91,19 +124,27 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         //restaurant_stars.setNumStars(rating);
 
 
-
     }
+
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.srp_restaurant_reservation) {
-            Intent it = getIntent();
-            String photo = it.getStringExtra("URL");
-            String url_rest = it.getStringExtra("URL_OPENTABLE");
-            Intent new1 = new Intent(SelectedRestaurantPage.this, BookTable.class);
-            new1.putExtra("url_image", photo);
-            new1.putExtra("url_opentable",url_rest);
-            startActivity(new1);
+        switch (v.getId()) {
+            case R.id.srp_restaurant_reservation:
+                Intent it = getIntent();
+                String photo = it.getStringExtra("URL");
+                String url_rest = it.getStringExtra("URL_OPENTABLE");
+                Intent new1 = new Intent(SelectedRestaurantPage.this, BookTable.class);
+                new1.putExtra("url_image", photo);
+                new1.putExtra("url_opentable", url_rest);
+                startActivity(new1);
+                break;
+            case R.id.srp_restaurant_add_review:
+                startActivity(new Intent(SelectedRestaurantPage.this, add_review.class));
+                break;
+            case R.id.srp_restaurant_reviews:
+                startActivity(new Intent(SelectedRestaurantPage.this, view_reviews.class));
+                break;
         }
     }
 }

@@ -87,7 +87,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         final ImageView up_ln_set_button = findViewById(R.id.up_ln_set_button);
         final ImageView up_email_button = findViewById(R.id.up_email_button);
 
-        //choose and upload 2 in 1
+        //choose and upload  -> 2 in 1 <-
         choose_image =  findViewById(R.id.choose_image);
         profilePicture = findViewById(R.id.profilePicture);
         pbar = findViewById(R.id.up_progressBar);
@@ -103,7 +103,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
 
 
 
-        pbar.setVisibility(View.INVISIBLE); // we don't need it until we call the upload button
+        pbar.setVisibility(View.INVISIBLE); // we don't need it until we click the upload button
 
 
         // UPLOAD IMAGE TO THE STORAGE AND UPDATE THE profilePicture in the realtime dbs START HERE ----------------------------

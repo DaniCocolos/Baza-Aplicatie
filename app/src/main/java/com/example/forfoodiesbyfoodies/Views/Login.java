@@ -20,11 +20,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.forfoodiesbyfoodies.Models.UserPage;
 import com.example.forfoodiesbyfoodies.R;
+import com.example.forfoodiesbyfoodies.StreetFoodAdd.add_street_food;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+//this class has an interface which allow the user to enter an email and password to ->
+//  -> login in order to get access to the application
+//  action possible on this ,login, redirect to forgot password and redirect to register page
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -139,7 +144,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     startActivity(new Intent(Login.this, SelectPage.class));
                 }//TODO aici sunt pentru a afisa eroare daca email exista in baza noastra de date
                 else {
-                    Toast.makeText(Login.this, "Login failed, please try again: " + task, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Email / password incorrect, please try again: " + task.getException(), Toast.LENGTH_SHORT).show();
                     //progressbar_login.setVisibility(View.GONE);
                 }
             }
