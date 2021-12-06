@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.media.RatingCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -13,14 +12,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.forfoodiesbyfoodies.Models.User;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.Reviews.add_review;
-import com.example.forfoodiesbyfoodies.Reviews.view_reviews;
+import com.example.forfoodiesbyfoodies.Reviews.ReviewsList;
 import com.example.forfoodiesbyfoodies.Views.BookTable;
-import com.example.forfoodiesbyfoodies.Views.Login;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 public class SelectedRestaurantPage extends AppCompatActivity implements View.OnClickListener {
@@ -118,7 +113,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         restaurant_name.setText(name);
         restaurant_address.setText(address);
         restaurant_description.setText(description);
-        restaurant_stars.setRating(g);
+        restaurant_stars.setRating(rating);//TODO vorbeste cu ovidiu de problema asta
         restaurant_type.setText(food_type);
         Picasso.get().load(photo).into(restaurant_image);  // restaurant picture
         //restaurant_stars.setNumStars(rating);
@@ -140,10 +135,28 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
                 startActivity(new1);
                 break;
             case R.id.srp_restaurant_add_review:
-                startActivity(new Intent(SelectedRestaurantPage.this, add_review.class));
+                Intent getIntent = getIntent();
+                String p1 = getIntent.getStringExtra("URL");
+                String id = getIntent.getStringExtra("id");
+                String stars = getIntent.getStringExtra("Rating");
+                String critic_username = getIntent.getStringExtra("username");
+                Intent in = new Intent(this, add_review.class);
+                 in.putExtra("id_restaurant", id); //restaurant id
+                 in.putExtra("url_image", p1);// restaurant image url
+                in.putExtra("current_rating", stars);
+
+                startActivity(in);
                 break;
             case R.id.srp_restaurant_reviews:
-                startActivity(new Intent(SelectedRestaurantPage.this, view_reviews.class));
+                startActivity(new Intent(SelectedRestaurantPage.this, ReviewsList.class));
+                Intent i = getIntent();
+                String url =i.getStringExtra("URL");
+                String desc = i.getStringExtra("Description");
+                String na = i.getStringExtra("Name");
+                Intent a = new Intent(SelectedRestaurantPage.this, ReviewsList.class);
+                a.putExtra("url", url);
+                a.putExtra("desc", desc);
+                a.putExtra("name", na);
                 break;
         }
     }

@@ -12,8 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
+            android:name=".AdapterStreetFood.StreetFoodAdapter"
+            android:exported="false" />
+        <activity
             android:name=".Reviews.add_review"
             android:exported="false" />
+        <activity
+            android:name=".Reviews.ReviewsList"
+            android:exported="false" />
+
         <activity
             android:name=".Views.MainActivity"
             android:exported="true">
@@ -56,6 +63,11 @@
         <activity
             android:name=".Adapters.RestaurantsList"
             android:exported="false" />
+
+
+
+
+
 
         <meta-data
             android:name="preloaded_fonts"

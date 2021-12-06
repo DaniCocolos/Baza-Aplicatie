@@ -28,6 +28,7 @@ public class RestaurantsList extends AppCompatActivity {
     RestaurantAdapter myAdapter;
     DatabaseReference dbref;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class RestaurantsList extends AppCompatActivity {
         rec_view = findViewById(R.id.rec_view1);
         dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
         rec_view.setLayoutManager(new LinearLayoutManager(this));
+
 
 
         list_of_restaurants = new ArrayList<>();

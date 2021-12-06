@@ -1,7 +1,5 @@
 package com.example.forfoodiesbyfoodies.Adapters;
 
-
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -59,9 +57,9 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
 
 
         float rating = Float.parseFloat(rest.getStars());
-        float g = 5 - rating;
-        holder.restaurant_rating.setRating(g);
-        holder.restaurant_rating.setStepSize(0.5F);
+        //float g = 4 - rating;
+        holder.restaurant_rating.setRating(rating);
+        holder.restaurant_rating.setStepSize(1);
         Picasso.get().load(list_of_restaurants.get(position).getImage_url()).fit().into(holder.restaurant_image);
         //Aici adaugam setText daca mai avem alte campuri, gen Vegetarian sau nu
         holder.object =  rest;
@@ -108,7 +106,10 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
                     // Intent vi = new Intent( , SelectedRestaurantPage.class);
 
                     //TODO AICI AM DEZACTIVAT TOT CE VEZI DEDESUPT
+
                    Intent it = new Intent(v.getContext() , SelectedRestaurantPage.class);
+
+
                     it.putExtra("Name", object.getRestaurant_name());
                     it.putExtra("Address", object.getRestaurant_address());
                     it.putExtra("URL", object.getImage_url());
@@ -116,8 +117,10 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
                     it.putExtra("Rating", object.getStars());
                     it.putExtra("Type", object.getFood_type());
                     it.putExtra("URL_OPENTABLE", object.getUrl_opentable());
+                    it.putExtra("id", object.getId());
 
-                   // it.putExtra("Obj", object.getClass());
+                            //working with parcelable or serializable
+                            //it.putExtra("Obj", object);
                     v.getContext().startActivity(it);
 
 

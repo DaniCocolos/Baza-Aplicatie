@@ -10,6 +10,16 @@ public class RestaurantsData {
      String food_type;
      String stars;
      String url_opentable;
+     String id;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
 
 
     public RestaurantsData(String restaurant_name, String restaurant_address, String image_url, String restaurant_description, String food_type, String stars,String url_opentable) {

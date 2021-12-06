@@ -85,4 +85,10 @@
     <string name="address">Address</string>
     <string name="search">Search</string>
     <string name="floating_button_open_popup_for_entering_topic_text">floating button open popup for entering topic text</string>
+    <string name="enter_your_text">Enter your text .....</string>
+    <string name="restaurant_photo">Restaurant photo</string>
+    <string name="add_review">Add review</string>
+    <string name="save">Save</string>
+    <string name="add_restaurant">Add Restaurant</string>
+
 </resources>

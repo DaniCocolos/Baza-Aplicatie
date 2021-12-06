@@ -10,6 +10,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
@@ -30,6 +32,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.RestaurantAdd.add_restaurant;
 import com.example.forfoodiesbyfoodies.RestaurantAdd.add_restaurant_object;
+import com.example.forfoodiesbyfoodies.Utils;
 import com.example.forfoodiesbyfoodies.Views.RegisterUser;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -247,9 +250,8 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
     public void open_menu() {
 
         //startActivity(new Intent(RegisterUser.this, TermAndConditions.class));
-
-                /*Intent go = new Intent(getApplicationContext(), TermAndConditions.class);
-                startActivity(go);*/
+        /*Intent go = new Intent(getApplicationContext(), TermAndConditions.class);
+        tartActivity(go);*/
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -263,12 +265,12 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
 
         //int position = LinearLayout.FOCUS_RIGHT;
         // boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, 650, 2200, true);
-        /*TextView textview_term = popupView.findViewById(R.id.textview_term);
-        //textview_term.setText(R.string.textview_term);r
+        final PopupWindow popupWindow = new PopupWindow(popupView, 600, 2300, true);
+       // TextView textview_term = popupView.findViewById(R.id.textview_term);
+        //textview_term.setText("Test");
         //textview_term.setMovementMethod(new ScrollingMovementMethod());
         Button button_agree = popupView.findViewById(R.id.button_agree);
-        button_agree.setOnClickListener(new View.OnClickListener() {
+       /* button_agree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             popupWindow.dismiss();
@@ -333,4 +335,6 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
         }
 
     }
+
+
 }

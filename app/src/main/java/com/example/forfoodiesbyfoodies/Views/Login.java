@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.forfoodiesbyfoodies.Adapters.SelectedRestaurantPage;
 import com.example.forfoodiesbyfoodies.Models.UserPage;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.StreetFoodAdd.add_street_food;
@@ -128,7 +129,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             return;
         }
 
-        if (password_login.length() < 4) {
+        if (password_login.length() < 6) {
             password.setError("Password is 4 minimum letters");
             password.requestFocus();
             return;

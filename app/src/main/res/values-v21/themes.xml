@@ -4,5 +4,6 @@
     <style name="Theme.ForFoodiesByFoodies" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColorPrimaryInverse">@color/white</item>
         <item name="android:colorControlActivated">@color/orange</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 </resources>
