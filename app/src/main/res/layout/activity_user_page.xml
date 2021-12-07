@@ -8,18 +8,7 @@
     android:background="@drawable/fundal"
     tools:context=".Models.UserPage">
 
-    <!--  <com.google.android.material.imageview.ShapeableImageView
-          android:id="@+id/imageView5"
-          android:layout_width="100dp"
 
-          android:layout_height="64dp"
-          android:layout_marginTop="20dp"
-          android:background="@drawable/rounded_corners"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          tools:srcCompat="@tools:sample/avatars" />
-  -->
 
     <EditText
         android:id="@+id/up_user_fn"
@@ -218,7 +207,7 @@
         tools:textColorHint="@color/sobolan" />
 
     <TextView
-        android:id="@+id/up_account_type"
+        android:id="@+id/view_users"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="147dp"
@@ -226,9 +215,10 @@
         android:layout_marginTop="92dp"
         android:layout_marginEnd="148dp"
         android:layout_marginRight="148dp"
-        android:text="@string/user_account_type"
+        android:text="@string/view_users"
+
         android:textColor="@color/white"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/up_user_email" />
@@ -239,17 +229,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="163dp"
         android:layout_marginRight="163dp"
         android:background="@drawable/button_term"
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/up_account_type"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintTop_toBottomOf="@+id/view_users"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/up_button_upload"

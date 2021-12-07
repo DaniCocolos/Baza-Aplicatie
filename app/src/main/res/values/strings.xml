@@ -90,5 +90,9 @@
     <string name="add_review">Add review</string>
     <string name="save">Save</string>
     <string name="add_restaurant">Add Restaurant</string>
+    <string name="view_users">View Users</string>
+    <string name="user_type">User type</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
 
 </resources>

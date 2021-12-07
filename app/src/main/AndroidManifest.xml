@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
+            android:name=".Models.View_Users"
+            android:exported="false" />
+        <activity
             android:name=".AdapterStreetFood.SelectedStreetFoodPage"
             android:exported="false" />
         <activity

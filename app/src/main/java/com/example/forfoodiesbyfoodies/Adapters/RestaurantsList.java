@@ -52,12 +52,7 @@ public class RestaurantsList extends AppCompatActivity {
         rec_view.setLayoutManager(new LinearLayoutManager(this));
         dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
         menu = findViewById(R.id.menu_hamburger);
-        menu.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                       open_menu();
-                                    }
-                                });
+        menu.setOnClickListener(v -> open_menu());
 
 
                 list_of_restaurants = new ArrayList<>();
@@ -103,7 +98,7 @@ public class RestaurantsList extends AppCompatActivity {
 
         //int position = LinearLayout.FOCUS_RIGHT;
         // boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, 600, 2200, true);
+        final PopupWindow popupWindow = new PopupWindow(popupView, 600, 2192, true);
         // TextView textview_term = popupView.findViewById(R.id.textview_term);
         //textview_term.setText("Test");
         //textview_term.setMovementMethod(new ScrollingMovementMethod());
@@ -120,53 +115,53 @@ public class RestaurantsList extends AppCompatActivity {
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RestaurantsList.this, UserPage.class));
+                startActivity(new Intent(getApplicationContext(), UserPage.class));
             }
         });
         tv_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(RestaurantsList.this, Login.class));
+                startActivity(new Intent(getApplicationContext(), Login.class));
             }
         });
         tv_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RestaurantsList.this, "This feature will be implemented in future! THanks for understanding", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "This feature will be implemented in future! THanks for understanding", Toast.LENGTH_SHORT).show();
 
             }
         });
         tv_reviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RestaurantsList.this, "This feature will be implemented in future! THanks for understanding", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "This feature will be implemented in future! THanks for understanding", Toast.LENGTH_SHORT).show();
 
             }
         });
         tv_restaurants.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RestaurantsList.this, RestaurantsList.class));
+                startActivity(new Intent(getApplicationContext(), RestaurantsList.class));
             }
         });
         tv_street_food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RestaurantsList.this, StreetFoodList.class));
+                startActivity(new Intent(getApplicationContext(), StreetFoodList.class));
             }
         });
         tv_add_restaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RestaurantsList.this, "This feature is accesible just for admins: admin@gmail.com / admin", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "This feature is accesible just for admins: admin@gmail.com / admin", Toast.LENGTH_SHORT).show();
 
             }
         });
         tv_add_street_food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                go_to_add_street_food();
+                startActivity(new Intent(getApplicationContext(), add_street_food.class));
             }
         });
 
@@ -177,9 +172,6 @@ public class RestaurantsList extends AppCompatActivity {
 
 
     }
-    public void go_to_add_street_food()
-    {
-        Intent i = new Intent(RestaurantsList.this, add_street_food.class);
-        startActivity(i);
-    }
+
+
 }

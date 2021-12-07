@@ -29,10 +29,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.forfoodiesbyfoodies.AdapterStreetFood.StreetFoodList;
+import com.example.forfoodiesbyfoodies.Adapters.RestaurantsList;
+import com.example.forfoodiesbyfoodies.Models.UserPage;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.RestaurantAdd.add_restaurant;
 import com.example.forfoodiesbyfoodies.RestaurantAdd.add_restaurant_object;
 import com.example.forfoodiesbyfoodies.Utils;
+import com.example.forfoodiesbyfoodies.Views.Login;
 import com.example.forfoodiesbyfoodies.Views.RegisterUser;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -200,10 +204,7 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
                                 String description = et_add_street_food_description.getText().toString();
                                 String location = et_add_street_food_location.getText().toString();
                                 String url = uri.toString();
-                                //String userid = "1928uduasjhd21iasdads";
 
-                                // String name, String location, String image, String type, String description,  String userid
-                                Log.d("userID", "USERID --> " + userid);
 
                                 add_street_food_object obj = new add_street_food_object(name,location,url,type,description,userid);
                                 dbref.child(id).setValue(obj).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -211,7 +212,7 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful())
                                         {
-                                            Toast.makeText(add_street_food.this, "Succesfully added:" + task.toString(), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(add_street_food.this, "Succesfully added, please check the StreetFood category", Toast.LENGTH_LONG).show();
                                         }else
                                         {
                                             Toast.makeText(add_street_food.this,"There was an error: " + task.getException(), Toast.LENGTH_LONG).show();
@@ -267,22 +268,84 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
 
         //int position = LinearLayout.FOCUS_RIGHT;
         // boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, 600, 2300, true);
+        final PopupWindow popupWindow = new PopupWindow(popupView, 600, 2200, true);
         // TextView textview_term = popupView.findViewById(R.id.textview_term);
         //textview_term.setText("Test");
         //textview_term.setMovementMethod(new ScrollingMovementMethod());
-        Button button_agree = popupView.findViewById(R.id.button_agree);
-       /* button_agree.setOnClickListener(new View.OnClickListener() {
+        TextView tv_profile = popupView.findViewById(R.id.tv_profile);
+        TextView tv_logout = popupView.findViewById(R.id.tv_logout);
+        TextView tv_reservation = popupView.findViewById(R.id.tv_reservation);
+        TextView tv_reviews =   popupView.findViewById(R.id.tv_reviews);
+        TextView tv_restaurants = popupView.findViewById(R.id.tv_restaurants);
+        TextView tv_street_food = popupView.findViewById(R.id.tv_street_food);
+        TextView tv_add_restaurant = popupView.findViewById(R.id.tv_add_restaurant);
+        TextView tv_add_street_food = popupView.findViewById(R.id.tv_add_street_food);
+
+
+        tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            popupWindow.dismiss();
+                startActivity(new Intent(add_street_food.this, UserPage.class));
             }
-        });*/
+        });
+        tv_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(add_street_food.this, Login.class));
+            }
+        });
+        tv_reservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(add_street_food.this, "This feature will be implemented in future! THanks for understanding", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        tv_reviews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(add_street_food.this, "This feature will be implemented in future! THanks for understanding", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        tv_restaurants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(add_street_food.this, RestaurantsList.class));
+            }
+        });
+        tv_street_food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(add_street_food.this, StreetFoodList.class));
+            }
+        });
+        tv_add_restaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(add_street_food.this, "This feature is accesible just for admins: admin@gmail.com / admin", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        tv_add_street_food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                go_to_add_street_food();
+            }
+        });
+
+
         // show the popup window
         // which view you pass in doesn't matter, it is only used for the window tolken
         popupWindow.showAtLocation(popupView, Gravity.RIGHT, 0, 0);
 
 
+    }
+    public void go_to_add_street_food()
+    {
+        Intent i = new Intent(add_street_food.this, add_street_food.class);
+        startActivity(i);
     }
 
 

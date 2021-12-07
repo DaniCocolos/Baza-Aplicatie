@@ -2,7 +2,6 @@ package com.example.forfoodiesbyfoodies.Models;
 
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -40,6 +39,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 public class UserPage extends AppCompatActivity implements View.OnClickListener {
     private FirebaseUser user;
     private DatabaseReference dbref;
@@ -53,6 +54,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
 
     private  int x = 0;
     ImageView profilePicture;
+    TextView view_users;
     private static final int IMAGERQ = 1;
     Button choose_image,up_button_upload;
     Uri imageUrl;
@@ -69,6 +71,8 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         buton =  findViewById(R.id.up_logout);
         buton.setOnClickListener(this);
 
+        view_users = findViewById(R.id.view_users);
+        view_users.setOnClickListener(v -> startActivity(new Intent(UserPage.this, View_Users.class)));
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbref = FirebaseDatabase.getInstance().getReference("_users_");
         userId = user.getUid();
@@ -81,7 +85,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         final TextView user_fn = findViewById(R.id.up_user_fn);
         final TextView user_ln = findViewById(R.id.up_user_ln);
         final TextView user_email = findViewById(R.id.up_user_email);
-        final TextView up_account_type = findViewById(R.id.up_account_type);
+        final TextView up_account_type = findViewById(R.id.view_users);
         final ImageView up_fn_set_btn = findViewById(R.id.up_fn_set_btn);
         final ImageView user_profile_picture = findViewById(R.id.profilePicture);
         final ImageView up_ln_set_button = findViewById(R.id.up_ln_set_button);
