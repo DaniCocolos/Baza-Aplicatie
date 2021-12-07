@@ -72,14 +72,15 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
     private StorageReference refStorage;
     private DatabaseReference dbref;
 
-     FirebaseUser user;
-    private FirebaseAuth mAuth;
+    FirebaseUser user;
+    FirebaseAuth mAuth;
 
 
     private static final int IMAGERQ = 1;
     private String type = "Non-vegetarian";
     Boolean image_checker= false;
-
+    Boolean existStreetFood = false;
+    ArrayList<add_street_food_object> list;
 
 
 
@@ -114,8 +115,8 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
         add_streetfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            pbar.setVisibility(View.VISIBLE);
-
+                pbar.setVisibility(View.VISIBLE);
+                upload.performClick();
             }
         });
 
@@ -128,42 +129,42 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 dbref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot id: snapshot.getChildren()) {
-                        String street_food_id = id.getKey();
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot id: snapshot.getChildren()) {
+                            String street_food_id = id.getKey();
 
-                        dbref.child(street_food_id).child("name").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.getValue().toString().equals(et_add_street_food_name.getText().toString()))
-                                {
-                                    //Toast.makeText(getApplicationContext(), "Contains", Toast.LENGTH_LONG).show();
-                                    et_add_street_food_name.setError("This street food already exists in our database");
-                                    et_add_street_food_name.requestFocus();
-                                    add_streetfood.setClickable(false);//making the button not clickable if the record exist
-                                   // add_streetfood.animate();
+                            dbref.child(street_food_id).child("name").addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if (snapshot.getValue().toString().equals(et_add_street_food_name.getText().toString()))
+                                    {
+                                        //Toast.makeText(getApplicationContext(), "Contains", Toast.LENGTH_LONG).show();
+                                        et_add_street_food_name.setError("This street food already exists in our database");
+                                        et_add_street_food_name.requestFocus();
+                                        add_streetfood.setClickable(false);//making the button not clickable if the record exist
+                                        // add_streetfood.animate();
+                                    }
+                                    else {
+                                        add_streetfood.setClickable(true);
+                                    }
                                 }
-                                else {
-                                    add_streetfood.setClickable(true);
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
                                 }
-                            }
+                            });
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
-                        });
+                        }
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+                });
             }
 
             @Override
@@ -179,15 +180,17 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
 
-
+                Log.d("Line 183", "183");
                 String id = dbref.push().getKey();
                 StorageReference reference = refStorage.child(id + "." + getExtension(imageUrl));
                 reference.putFile(imageUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // Toast.makeText(getApplicationContext(), "Ok + " , Toast.LENGTH_SHORT).show();
                         //Log.d("URL", "URL: "+ refStorage.getDownloadUrl());
-
+                        Log.d("Line 193", "193");
                         //Log.d("URL2", "URLfrom download: " +taskSnapshot.getError());
                         pbar.setVisibility(View.GONE);
                         reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -265,16 +268,14 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
         //int position = LinearLayout.FOCUS_RIGHT;
         // boolean focusable = true; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, 600, 2300, true);
-       // TextView textview_term = popupView.findViewById(R.id.textview_term);
+        // TextView textview_term = popupView.findViewById(R.id.textview_term);
         //textview_term.setText("Test");
         //textview_term.setMovementMethod(new ScrollingMovementMethod());
         Button button_agree = popupView.findViewById(R.id.button_agree);
-
        /* button_agree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             popupWindow.dismiss();
-
             }
         });*/
         // show the popup window
@@ -292,7 +293,7 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(i, IMAGERQ);
-        }
+    }
     // Script to choose photo from phone library END HERE-----------------------------------------------------------------------
 
 

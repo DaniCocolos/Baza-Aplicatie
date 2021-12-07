@@ -308,7 +308,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.up_logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(UserPage.this, Login.class));
+                finish();
                 break;
             case R.id.up_fn_set_btn:
                 change_fn();
