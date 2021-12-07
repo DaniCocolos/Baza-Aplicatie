@@ -19,6 +19,7 @@ public class StreetFoodData {
         this.description = description;
         this.userid = userid;
     }
+    public StreetFoodData(){}
 
     public String getName() {
         return name;

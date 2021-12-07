@@ -52,13 +52,14 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull StreetFoodAdapter.Viewholder viewholder, int i) {
         StreetFoodData streetFoodData = list_of_streetfood.get(i);
+
         viewholder.restaurant_name.setText(streetFoodData.getName());
         viewholder.restaurant_address.setText(streetFoodData.getLocation());
         viewholder.restaurant_type.setText(streetFoodData.getDescription());
-
+        viewholder.restaurant_rating.setVisibility(View.GONE);
 
         Picasso.get().load(list_of_streetfood.get(i).getUrl()).fit().into(viewholder.restaurant_image);
-        //Aici adaugam setText daca mai avem alte campuri, gen Vegetarian sau nu
+
         viewholder.object = streetFoodData;
     }
 

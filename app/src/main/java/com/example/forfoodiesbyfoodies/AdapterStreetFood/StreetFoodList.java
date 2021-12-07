@@ -41,7 +41,7 @@ public class StreetFoodList extends AppCompatActivity {
         rec_view.setAdapter(myAdapter);
         dbref = FirebaseDatabase.getInstance().getReference("StreetFood");
 
-        dbref.child("StreetFood").addListenerForSingleValueEvent(new ValueEventListener() {
+        dbref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){

@@ -112,7 +112,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         restaurant_name.setText(name);
         restaurant_address.setText(address);
         restaurant_description.setText(description);
-        restaurant_stars.setRating(rating);//TODO vorbeste cu ovidiu de problema asta
+        restaurant_stars.setRating(rating);//
         restaurant_type.setText(food_type);
         Picasso.get().load(photo).into(restaurant_image);  // restaurant picture
         //restaurant_stars.setNumStars(rating);
