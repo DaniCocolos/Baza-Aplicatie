@@ -216,7 +216,7 @@
         android:layout_marginEnd="148dp"
         android:layout_marginRight="148dp"
         android:text="@string/view_users"
-
+android:background="@drawable/button_term"
         android:textColor="@color/white"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
