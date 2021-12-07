@@ -64,7 +64,10 @@ public class SelectPage extends AppCompatActivity implements View.OnClickListene
                 startActivity(new Intent(SelectPage.this, RestaurantsList.class));
                 break;
             case R.id.home_streetfood_photo:
-                startActivity(new Intent(SelectPage.this, Street_food.class));
+                //startActivity(new Intent(SelectPage.this, Street_food.class));
+                Intent i = new Intent(SelectPage.this, RestaurantsList.class);
+                i.putExtra("check_for_ref", 0);
+                startActivity(i);
                 break;
             case R.id.textView8:
                 FirebaseAuth.getInstance().signOut();

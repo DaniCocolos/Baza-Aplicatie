@@ -3,6 +3,8 @@ package com.example.forfoodiesbyfoodies.Reviews;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,14 +45,23 @@ public class ReviewsList extends AppCompatActivity {
 
         dbref = FirebaseDatabase.getInstance().getReference("reviews");
 
-        et_Title = findViewById(R.id.et_Title);
+       /* et_Title = findViewById(R.id.et_Title);
         et_Description = findViewById(R.id.et_Description);
-        imageView = findViewById(R.id.imageView);
+        imageView = findViewById(R.id.imageView);*/
 
-        Intent i =  getIntent();
-        et_Title.setText(i.getStringExtra("name"));
-        et_Description.setText(i.getStringExtra("desc"));
-        Picasso.get().load(i.getStringExtra("url")).into(imageView);
+       /* Intent i =  getIntent();
+        String title = i.getStringExtra("name");
+
+        Log.d("title", "title" + title);
+        String description = i.getStringExtra("desc");
+        Log.d("desc", "desc" + description);*/
+
+        //et_Description.setText("description");
+        //et_Title.setText("Restaurant title");
+        et_Description.setVisibility(View.GONE);
+        imageView.setVisibility(View.GONE);
+        et_Title.setVisibility(View.GONE);
+        //Picasso.get().load("https://cdn.dribbble.com/users/3641896/screenshots/14547182/media/664c0364d8df08028b392a980b4f2b4a.jpg").into(imageView);
 
 
 

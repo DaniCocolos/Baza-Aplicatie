@@ -95,9 +95,8 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         String photo = it.getStringExtra("URL");
         String url_rest = it.getStringExtra("URL_OPENTABLE");
 
-        //TODO url_rest este url pentru opentable, si modifica ce este in interiorul linkul cu data aleasa de user
-        // url_rest = url_rest.replace("thisshouldbecanged", "data_selected_by_user");
-        Log.d("demo", "URL-> " + url_rest);
+
+        //Log.d("demo", "URL-> " + url_rest);
         //--------------------------------------------------------------------------------------------------------
 
         //Integer stars = it.getIntArrayExtra("Rating");
@@ -154,9 +153,9 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
                 String desc = i.getStringExtra("Description");
                 String na = i.getStringExtra("Name");
                 Intent a = new Intent(SelectedRestaurantPage.this, ReviewsList.class);
-                a.putExtra("url", url);
+             /*   a.putExtra("url", url);
                 a.putExtra("desc", desc);
-                a.putExtra("name", na);
+                a.putExtra("name", na);*/
                 break;
         }
     }

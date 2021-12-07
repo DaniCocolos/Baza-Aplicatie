@@ -72,7 +72,7 @@ public class add_review extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        if (s.length() < 16 )
+                        if (count < 16 )
                         {
                             Toast.makeText(add_review.this, "Minimum number of characters is 16", Toast.LENGTH_SHORT).show();
                             button.setClickable(false);

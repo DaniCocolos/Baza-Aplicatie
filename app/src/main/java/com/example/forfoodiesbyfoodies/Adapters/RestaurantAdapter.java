@@ -34,6 +34,7 @@ public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.V
     // Constructor
     public RestaurantAdapter( Context context, ArrayList<RestaurantsData> list_of_restaurants) {
         this.list_of_restaurants = list_of_restaurants;
+
     }
 
     @NonNull
