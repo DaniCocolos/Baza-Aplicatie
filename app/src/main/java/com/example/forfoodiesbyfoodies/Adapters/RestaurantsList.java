@@ -36,16 +36,8 @@ public class RestaurantsList extends AppCompatActivity {
         setContentView(activity_restaurantslist);
 
         rec_view = findViewById(R.id.rec_view1);
-        Intent in = getIntent();
-
-
-
-        //TODO street food RC sau remodele clasa de street food si folosesc acelasi recyclerview doar ca
-        // structra in dbaza de date sa fie identica cu cea a restaurantelor
-
-
         rec_view.setLayoutManager(new LinearLayoutManager(this));
-
+        dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
 
 
 

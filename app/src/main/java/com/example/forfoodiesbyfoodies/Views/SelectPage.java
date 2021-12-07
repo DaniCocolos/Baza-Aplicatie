@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.forfoodiesbyfoodies.AdapterStreetFood.StreetFoodList;
 import com.example.forfoodiesbyfoodies.Adapters.RestaurantsList;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.Street_food;
@@ -65,8 +66,8 @@ public class SelectPage extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.home_streetfood_photo:
                 //startActivity(new Intent(SelectPage.this, Street_food.class));
-                Intent i = new Intent(SelectPage.this, RestaurantsList.class);
-                i.putExtra("check_for_ref", 0);
+                Intent i = new Intent(SelectPage.this, StreetFoodList.class);
+
                 startActivity(i);
                 break;
             case R.id.textView8:
