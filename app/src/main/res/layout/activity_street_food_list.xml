@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_splh"
     android:orientation="vertical"
-    tools:context=".Adapters.RestaurantsList">
+    tools:context=".AdapterStreetFood.StreetFoodList">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:src="@drawable/ic_search" />
 
         <EditText
-            android:id="@+id/search_bar_from_add_restaurant"
+            android:id="@+id/search_bar_from_streetfoodlist"
             android:layout_width="121dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -60,7 +60,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rec_view1"
+            android:id="@+id/rec_view_street_food"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white" />

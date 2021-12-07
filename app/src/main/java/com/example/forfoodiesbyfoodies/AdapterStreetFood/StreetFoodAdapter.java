@@ -17,8 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.forfoodiesbyfoodies.Adapters.RestaurantAdapter;
-import com.example.forfoodiesbyfoodies.Adapters.RestaurantsData;
+
 import com.example.forfoodiesbyfoodies.Adapters.SelectedRestaurantPage;
 import com.example.forfoodiesbyfoodies.R;
 import com.squareup.picasso.Picasso;
@@ -41,7 +40,7 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.Vi
     @Override
     public StreetFoodAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         // to inflate the layout for each item of recycler view.
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.restaurants_card_layout, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.add_streetfood_card_layout, viewGroup, false);
         view.setVisibility(View.VISIBLE);
 
         return new StreetFoodAdapter.Viewholder(view);
@@ -53,12 +52,12 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.Vi
     public void onBindViewHolder(@NonNull StreetFoodAdapter.Viewholder viewholder, int i) {
         StreetFoodData streetFoodData = list_of_streetfood.get(i);
 
-        viewholder.restaurant_name.setText(streetFoodData.getName());
-        viewholder.restaurant_address.setText(streetFoodData.getLocation());
-        viewholder.restaurant_type.setText(streetFoodData.getDescription());
-        viewholder.restaurant_rating.setVisibility(View.GONE);
+        viewholder.et_Title.setText(streetFoodData.getName());
+        viewholder.et_Description.setText(streetFoodData.getLocation());
 
-        Picasso.get().load(list_of_streetfood.get(i).getUrl()).fit().into(viewholder.restaurant_image);
+
+
+        Picasso.get().load(list_of_streetfood.get(i).getImage()).fit().into(viewholder.im_street_food_view);
 
         viewholder.object = streetFoodData;
     }
@@ -70,22 +69,20 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.Vi
 
 
     public class Viewholder extends RecyclerView.ViewHolder {
-        ImageView restaurant_image;
-        TextView restaurant_name, restaurant_address, restaurant_type;
+        ImageView im_street_food_view;
+        TextView et_Title, et_Description;
         View rootView;
         int position;
         StreetFoodData object;
-        RatingBar restaurant_rating;
+
 
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             rootView = itemView;
-            restaurant_name = itemView.findViewById(R.id.restaurant_name);
-            restaurant_address = itemView.findViewById(R.id.restaurant_address);
-            restaurant_image = itemView.findViewById(R.id.restaurant_image);
-            restaurant_type = itemView.findViewById(R.id.cl_restaurant_type2);
-            restaurant_rating = itemView.findViewById(R.id.restaurant_rating);
+            et_Title = itemView.findViewById(R.id.et_Title);
+            im_street_food_view = itemView.findViewById(R.id.im_street_food_view); //photo
+            et_Description = itemView.findViewById(R.id.et_Description);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -103,9 +100,9 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.Vi
 
 
 
-                    Intent it = new Intent(v.getContext(), SelectedRestaurantPage.class);
+                    Intent it = new Intent(v.getContext(), SelectedStreetFoodPage.class);
 
-                    it.putExtra("object", (Parcelable) object);
+
 
                    /* it.putExtra("Name", object.getRestaurant_name());
                     it.putExtra("Address", object.getRestaurant_address());
@@ -117,7 +114,11 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.Vi
                     it.putExtra("id", object.getId());*/
 
                     //working with parcelable or serializable
-                    //it.putExtra("Obj", object);
+                    it.putExtra("title", object.getName());
+                    it.putExtra("location", object.getLocation());
+                    it.putExtra("photo", object.getImage());
+                    it.putExtra("description", object.getDescription());
+                    it.putExtra("type", object.getType());
                     v.getContext().startActivity(it);
 
 

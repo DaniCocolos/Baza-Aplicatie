@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -67,14 +66,14 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
 
 
         //Textviews for restaurant details start here-----------------------------------------------
-        restaurant_name = findViewById(R.id.srp_restaurant_name);
-        restaurant_description = findViewById(R.id.srp_restaurant_description);
-        restaurant_address = findViewById(R.id.srp_restaurant_address);
-        restaurant_type = findViewById(R.id.srp_restaurant_type);
+        restaurant_name = findViewById(R.id.sf_name);
+        restaurant_description = findViewById(R.id.sf_desc);
+        restaurant_address = findViewById(R.id.sf_location);
+        restaurant_type = findViewById(R.id.sf_type);
         //Textviews for restaurant details end here-------------------------------------------------
 
         //Image views and ratingbar start here------------------------------------------------------
-        restaurant_image = findViewById(R.id.srp_image_restaurant);
+        restaurant_image = findViewById(R.id.sf_image);
         restaurant_stars = findViewById(R.id.srp_restaurant_rating);
         //Image views and ratingbar end here--------------------------------------------------------
 
@@ -82,7 +81,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         //Button declaration start here ------------------------------------------------------------
         button_view_reviews = findViewById(R.id.srp_restaurant_reviews);
         button_add_reviews = findViewById(R.id.srp_restaurant_add_review);
-        button_reservation = findViewById(R.id.srp_restaurant_reservation);
+        button_reservation = findViewById(R.id.button_getdirectons);
         //Button declaration end here --------------------------------------------------------------
         button_reservation.setOnClickListener(this);
         button_view_reviews.setOnClickListener(this);
@@ -94,19 +93,14 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         String address = it.getStringExtra("Address");
         String photo = it.getStringExtra("URL");
         String url_rest = it.getStringExtra("URL_OPENTABLE");
-
-
-        //Log.d("demo", "URL-> " + url_rest);
-        //--------------------------------------------------------------------------------------------------------
-
-        //Integer stars = it.getIntArrayExtra("Rating");
-        String stars = it.getStringExtra("Rating");
-        // TODO SI AICI AM SA VAD CUM PLM FAC CA SA FAC RATING-UL
-        float rating = Float.parseFloat(stars);
-        float g = -5 - rating;
-
         String description = it.getStringExtra("Description");
         String food_type = it.getStringExtra("Type");
+        String stars = it.getStringExtra("Rating");
+
+        float rating = Float.parseFloat(stars);
+        //float g = -5 - rating;
+
+
 
 
         restaurant_name.setText(name);
@@ -115,7 +109,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
         restaurant_stars.setRating(rating);//
         restaurant_type.setText(food_type);
         Picasso.get().load(photo).into(restaurant_image);  // restaurant picture
-        //restaurant_stars.setNumStars(rating);
+
 
 
     }
@@ -124,7 +118,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.srp_restaurant_reservation:
+            case R.id.button_getdirectons:
                 Intent it = getIntent();
                 String photo = it.getStringExtra("URL");
                 String url_rest = it.getStringExtra("URL_OPENTABLE");

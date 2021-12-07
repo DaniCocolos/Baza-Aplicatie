@@ -79,8 +79,7 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
     private static final int IMAGERQ = 1;
     private String type = "Non-vegetarian";
     Boolean image_checker= false;
-    Boolean existStreetFood = false;
-    ArrayList<add_street_food_object> list;
+
 
 
 
@@ -186,7 +185,7 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
                 reference.putFile(imageUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                       // Toast.makeText(getApplicationContext(), "Ok + " , Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(getApplicationContext(), "Ok + " , Toast.LENGTH_SHORT).show();
                         //Log.d("URL", "URL: "+ refStorage.getDownloadUrl());
 
                         //Log.d("URL2", "URLfrom download: " +taskSnapshot.getError());
@@ -270,6 +269,7 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
         //textview_term.setText("Test");
         //textview_term.setMovementMethod(new ScrollingMovementMethod());
         Button button_agree = popupView.findViewById(R.id.button_agree);
+
        /* button_agree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

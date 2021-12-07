@@ -1,9 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_splh"
+    android:orientation="vertical"
     tools:context=".AdapterStreetFood.SelectedStreetFoodPage">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/logo_add_restaurant"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_logo"
+            android:src="@drawable/logo_splh"
+            tools:ignore="ImageContrastCheck" />
+
+        <ImageView
+            android:id="@+id/search_icon_add_restaurant"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            android:layout_centerVertical="true"
+            android:layout_marginRight="37dp"
+            android:layout_marginEnd="37dp"
+            android:src="@drawable/ic_search"
+            android:contentDescription="@string/search_input_text" />
+
+        <EditText
+            android:id="@+id/search_bar_from_streetfoodlist"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="68dp"
+            android:layout_marginRight="68dp"
+            android:background="@drawable/edit_tetext_round"
+            android:hint="@string/search_restaurants"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/sobolan"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/menu_hamburger"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/this_is_the_menu"
+            android:padding="1dp"
+            android:src="@drawable/ic_menu" />
+
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <ImageView
+            android:id="@+id/sf_image"
+            android:layout_width="239dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="8dp"
+
+            android:contentDescription="@string/app_logo"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/sf_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/restaurant_name"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sf_image" />
+
+        <TextView
+            android:id="@+id/sf_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/restaurant_type"
+            android:textColor="@color/teal_200"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sf_name" />
+
+        <TextView
+            android:id="@+id/sf_desc"
+            android:layout_width="301dp"
+            android:layout_height="172dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            app:barrierMargin="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sf_location" />
+
+        <Button
+            android:id="@+id/srp_restaurant_reviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="26dp"
+            android:background="@color/black"
+            android:gravity="center"
+            android:text="@string/view_reviews"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_rating">
+
+        </Button>
+
+        <Button
+            android:id="@+id/srp_restaurant_add_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@color/black"
+            android:drawableBottom="@drawable/edit_tetext_round"
+            android:gravity="center"
+            android:text="@string/add_reviews"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_rating"
+            app:layout_constraintVertical_bias="0.0">
+
+        </Button>
+
+        <TextView
+            android:id="@+id/sf_location"
+            android:layout_width="283dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/location"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sf_type" />
+
+        <RatingBar
+            android:id="@+id/srp_restaurant_rating"
+            style="@android:style/Widget.DeviceDefault.RatingBar.Indicator"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="115dp"
+            android:layout_marginLeft="115dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="115dp"
+            android:layout_marginRight="115dp"
+            android:isIndicator="true"
+            android:max="5"
+            android:numStars="0"
+            android:stepSize="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sf_desc" />
+
+        <Button
+            android:id="@+id/button_getdirectons"
+            android:layout_width="390dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_term"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="GET DIRECTIONS"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_rating"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

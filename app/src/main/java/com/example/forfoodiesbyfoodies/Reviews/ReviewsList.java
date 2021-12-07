@@ -45,9 +45,9 @@ public class ReviewsList extends AppCompatActivity {
 
         dbref = FirebaseDatabase.getInstance().getReference("reviews");
 
-       /* et_Title = findViewById(R.id.et_Title);
+        et_Title = findViewById(R.id.et_Title);
         et_Description = findViewById(R.id.et_Description);
-        imageView = findViewById(R.id.imageView);*/
+        imageView = findViewById(R.id.imageView);
 
        /* Intent i =  getIntent();
         String title = i.getStringExtra("name");

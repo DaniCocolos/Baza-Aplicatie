@@ -36,7 +36,7 @@
             android:contentDescription="@string/search_input_text" />
 
         <EditText
-            android:id="@+id/search_bar_from_add_restaurant"
+            android:id="@+id/search_bar_from_streetfoodlist"
             android:layout_width="121dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -75,7 +75,7 @@
 
 
         <ImageView
-            android:id="@+id/srp_image_restaurant"
+            android:id="@+id/sf_image"
             android:layout_width="239dp"
             android:layout_height="125dp"
             android:layout_marginTop="8dp"
@@ -90,7 +90,7 @@
         </ImageView>
 
         <TextView
-            android:id="@+id/srp_restaurant_name"
+            android:id="@+id/sf_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -101,10 +101,10 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/srp_image_restaurant" />
+            app:layout_constraintTop_toBottomOf="@+id/sf_image" />
 
         <TextView
-            android:id="@+id/srp_restaurant_type"
+            android:id="@+id/sf_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -115,10 +115,10 @@
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_name" />
+            app:layout_constraintTop_toBottomOf="@+id/sf_name" />
 
         <TextView
-            android:id="@+id/srp_restaurant_description"
+            android:id="@+id/sf_desc"
             android:layout_width="301dp"
             android:layout_height="172dp"
             android:layout_marginTop="8dp"
@@ -128,7 +128,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.514"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_address" />
+            app:layout_constraintTop_toBottomOf="@+id/sf_location" />
 
         <Button
             android:id="@+id/srp_restaurant_reviews"
@@ -172,7 +172,7 @@
         </Button>
 
         <TextView
-            android:id="@+id/srp_restaurant_address"
+            android:id="@+id/sf_location"
             android:layout_width="283dp"
             android:layout_height="23dp"
             android:layout_marginTop="16dp"
@@ -180,7 +180,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_type" />
+            app:layout_constraintTop_toBottomOf="@+id/sf_type" />
 
         <RatingBar
             android:id="@+id/srp_restaurant_rating"
@@ -199,10 +199,10 @@
             android:stepSize="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/srp_restaurant_description" />
+            app:layout_constraintTop_toBottomOf="@+id/sf_desc" />
 
         <Button
-            android:id="@+id/srp_restaurant_reservation"
+            android:id="@+id/button_getdirectons"
             android:layout_width="390dp"
             android:layout_height="34dp"
             android:layout_marginStart="10dp"

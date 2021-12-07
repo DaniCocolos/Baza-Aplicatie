@@ -7,7 +7,7 @@ public class StreetFoodData {
     private String image;
     private String type;
     private String description;
-    private String url;
+
     private String userid;
 
 
@@ -61,13 +61,7 @@ public class StreetFoodData {
         this.description = description;
     }
 
-    public String getUrl() {
-        return url;
-    }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
 
     public String getUserid() {
         return userid;

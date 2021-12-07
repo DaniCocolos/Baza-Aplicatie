@@ -2,7 +2,6 @@ package com.example.forfoodiesbyfoodies.Adapters;
 
 import static com.example.forfoodiesbyfoodies.R.layout.activity_restaurantslist;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -35,7 +34,7 @@ public class RestaurantsList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(activity_restaurantslist);
 
-        rec_view = findViewById(R.id.rec_view1);
+        rec_view = findViewById(R.id.rec_view);
         rec_view.setLayoutManager(new LinearLayoutManager(this));
         dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
 
