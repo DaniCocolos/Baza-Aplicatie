@@ -85,7 +85,7 @@ public class UserPage extends AppCompatActivity implements View.OnClickListener 
         final TextView user_fn = findViewById(R.id.up_user_fn);
         final TextView user_ln = findViewById(R.id.up_user_ln);
         final TextView user_email = findViewById(R.id.up_user_email);
-        final TextView up_account_type = findViewById(R.id.view_users);
+        final TextView up_account_type = findViewById(R.id.user_type);
         final ImageView up_fn_set_btn = findViewById(R.id.up_fn_set_btn);
         final ImageView user_profile_picture = findViewById(R.id.profilePicture);
         final ImageView up_ln_set_button = findViewById(R.id.up_ln_set_button);
