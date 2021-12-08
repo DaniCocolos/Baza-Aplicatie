@@ -3,6 +3,7 @@ package com.example.forfoodiesbyfoodies.Forum;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -92,19 +93,22 @@ public class AnwersForumList extends AppCompatActivity {
 
 
 
-                    dbref2.child(user_id).addListenerForSingleValueEvent(new ValueEventListener() {
+                    dbref2.child(user_id).child("username").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            User user = new User();
-                            String username = user.getUsername();
-                            String photo = user.getProfilePicture();
+
+                            String username = (String) snapshot.getValue();
+
                             //String username = (String) snapshot.getValue();
                             String answer = input_text.getText().toString();
                             ForumObject obj = new ForumObject();
                             obj.setUsername(username);
+                           // Log.d("username", username);
                             obj.setAnswerText(answer);
-                            obj.setUrl(photo);
-                            dbref.child(id).setValue(obj).addOnCompleteListener(new OnCompleteListener<Void>() {
+                           // Log.d("answer", answer);
+
+                            //Log.d("photo", photo);
+                            dbref.child(id).child(Objects.requireNonNull(dbref.push().getKey())).setValue(obj).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful())

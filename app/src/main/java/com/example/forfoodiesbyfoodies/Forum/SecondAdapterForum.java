@@ -71,25 +71,27 @@ public class SecondAdapterForum extends RecyclerView.Adapter<SecondAdapterForum.
             chat_username = itemView.findViewById(R.id.chat_username);
             photo = itemView.findViewById(R.id.photo_username);
             //username = itemView.findViewById(R.id.chat_username);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            /*itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /*Intent intent = new Intent(v.getContext(), AnwersForumList.class);
+                    *//*Intent intent = new Intent(v.getContext(), AnwersForumList.class);
                     intent.putExtra("id", object.getTopic_id());
                     intent.putExtra("title", object.getTopic_title());
                     intent.putExtra("desc", object.getTopic_description());
-                    intent.putExtra("username", object.getUsername());*/
+                    intent.putExtra("username", object.getUsername());*//*
+*//*
 
                     Log.d("id", "id->" +object.getTopic_id());
                     Log.d("title", "title->" + object.getTopic_title());
                     Log.d("desc", "desc->" + object.getTopic_description());
                     Log.d("username", "username-> " + object.getUsername());
 
+*//*
 
 
                     //v.getContext().startActivity(intent);
                 }
-            });
+            });*/
         }
     }
 }
