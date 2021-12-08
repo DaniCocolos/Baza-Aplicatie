@@ -95,6 +95,11 @@
     <string name="previous">Previous</string>
     <string name="next">Next</string>
     <string name="food_critic">Food Critic</string>
+    <string name="delete_user">Delete user</string>
+    <string name="add_topic">Add Topic</string>
+    <string name="enter_your_comment">Enter your comment</string>
+    <string name="add_comment">Add comment</string>
+    <string name="comment">comment</string>
 
 
 </resources>

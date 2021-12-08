@@ -8,12 +8,9 @@ public class ReviewsData {
 
     String stars;
 
-    //TEST
+    //TEST works!!!! AMAZING!!!!!!!!!!!!!!
     String up;
     String down;
-
-
-
     String critic_name;
     String review_text;
     //TEST END

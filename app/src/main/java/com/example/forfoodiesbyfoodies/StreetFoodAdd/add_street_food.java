@@ -206,7 +206,7 @@ public class add_street_food extends AppCompatActivity implements View.OnClickLi
                                 String url = uri.toString();
 
 
-                                add_street_food_object obj = new add_street_food_object(name,location,url,type,description,userid);
+                                add_street_food_object obj = new add_street_food_object(name,location,url,type,description,userid,id);
                                 dbref.child(id).setValue(obj).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

@@ -111,6 +111,10 @@ public class ReviewsList extends AppCompatActivity {
 
                     list_of_reviews.add(obj);
                 }
+                if (list_of_reviews.size() == 0)
+                {
+                    Toast.makeText(ReviewsList.this,"There are no reviews for this restaurant", Toast.LENGTH_LONG).show();
+                }
                 myAdapter.notifyDataSetChanged();
             }
 

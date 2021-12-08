@@ -59,6 +59,15 @@ public class add_review extends AppCompatActivity {
         String id_restaurant = it.getStringExtra("id_restaurant");
         String url_photo_restaurant = it.getStringExtra("url_image");
         String current_rating = it.getStringExtra("current_rating");
+        String location = it.getStringExtra("location_dbref");
+        if (location.equals("StreetFood"))
+        {
+            dbref_restaurant = FirebaseDatabase.getInstance().getReference("StreetFood");
+        }
+        else
+        {
+            dbref_restaurant = FirebaseDatabase.getInstance().getReference("Restaurants");
+        }
 
         //------------------------------------------------------------------------------------------------------
             menu = findViewById(R.id.menu_hamburger);
@@ -68,7 +77,8 @@ public class add_review extends AppCompatActivity {
         String critic_user_ID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         //------------------------------------------------------------------------------------------------------
         dbref = FirebaseDatabase.getInstance().getReference("reviews");
-        dbref_restaurant = FirebaseDatabase.getInstance().getReference("Restaurants");
+
+
         //load image restaurant in the image View
         rest_pics = findViewById(R.id.imageView5); // restaurant image
         Picasso.get().load(url_photo_restaurant).into(rest_pics);

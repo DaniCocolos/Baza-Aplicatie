@@ -146,6 +146,8 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
                  in.putExtra("id_restaurant", id); //restaurant id
                  in.putExtra("url_image", p1);// restaurant image url
                 in.putExtra("current_rating", stars);
+                in.putExtra("location_dbref", "Restaurants");
+
 
                 startActivity(in);
                 break;
@@ -155,6 +157,7 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
                 String idrest = get.getStringExtra("id");
                 Intent review = new Intent(SelectedRestaurantPage.this, ReviewsList.class);
                 review.putExtra("id", idrest);
+
                 startActivity(review);
              /*   a.putExtra("url", url);
                 a.putExtra("desc", desc);

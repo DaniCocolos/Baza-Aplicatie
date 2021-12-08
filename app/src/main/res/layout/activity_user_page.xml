@@ -5,15 +5,14 @@
     android:id="@+id/button_upload"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/fundal"
+    android:background="@drawable/background_splh"
     tools:context=".Models.UserPage">
-
 
 
     <EditText
         android:id="@+id/up_user_fn"
         android:layout_width="276dp"
-        android:layout_height="36dp"
+        android:layout_height="48dp"
         android:layout_marginStart="58dp"
         android:layout_marginLeft="58dp"
         android:layout_marginTop="8dp"
@@ -50,7 +49,7 @@
     <EditText
         android:id="@+id/up_user_email"
         android:layout_width="277dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:layout_marginStart="59dp"
         android:layout_marginLeft="59dp"
         android:layout_marginTop="16dp"
@@ -71,14 +70,17 @@
 
     <ImageView
         android:id="@+id/up_fn_set_btn"
-        android:layout_width="33dp"
-        android:layout_height="36dp"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/up_user_fn"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/ic_mode_edit"
         tools:ignore="ContentDescription,VectorDrawableCompat" />
 
@@ -100,11 +102,11 @@
 
     <ImageView
         android:id="@+id/up_email_button"
-        android:layout_width="33dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginRight="42dp"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
         android:contentDescription="@string/set_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/up_user_email"
@@ -114,11 +116,11 @@
 
     <ImageView
         android:id="@+id/up_ln_set_button"
-        android:layout_width="33dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginRight="43dp"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
         android:contentDescription="@string/set_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/up_user_ln"
@@ -159,8 +161,8 @@
 
     <Button
         android:id="@+id/choose_image"
-        android:layout_width="40dp"
-        android:layout_height="22dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="@drawable/ic_upload"
         app:layout_constraintBottom_toBottomOf="@+id/profilePicture"
         app:layout_constraintEnd_toEndOf="@+id/profilePicture"
@@ -169,7 +171,7 @@
         app:layout_constraintTop_toTopOf="@+id/profilePicture"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_upload"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView2"
@@ -190,7 +192,7 @@
     <EditText
         android:id="@+id/up_user_ln"
         android:layout_width="276dp"
-        android:layout_height="36dp"
+        android:layout_height="48dp"
         android:layout_marginStart="59dp"
         android:layout_marginLeft="59dp"
         android:layout_marginTop="8dp"
@@ -212,12 +214,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="147dp"
         android:layout_marginLeft="147dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="148dp"
         android:layout_marginRight="148dp"
+        android:background="@drawable/button_term"
+        android:gravity="center"
         android:text="@string/view_users"
-android:background="@drawable/button_term"
         android:textColor="@color/white"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -237,7 +241,8 @@ android:background="@drawable/button_term"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_users" />
 
     <Button
         android:id="@+id/up_button_upload"
@@ -258,10 +263,11 @@ android:background="@drawable/button_term"
         android:layout_marginStart="166dp"
         android:layout_marginLeft="166dp"
 
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="176dp"
         android:layout_marginRight="176dp"
+        android:gravity="center"
         android:text="@string/user_type"
-        android:textAlignment="center"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

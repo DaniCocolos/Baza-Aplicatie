@@ -109,7 +109,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.Viewhold
             imageButton2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   String name =  object.getCritic_name();
+
 
                     textView10.setText(new StringBuilder().append("").append(++down));
                 }

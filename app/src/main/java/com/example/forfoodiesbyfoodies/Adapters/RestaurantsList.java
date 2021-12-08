@@ -55,7 +55,7 @@ public class RestaurantsList extends AppCompatActivity {
         menu.setOnClickListener(v -> open_menu());
 
 
-                list_of_restaurants = new ArrayList<>();
+        list_of_restaurants = new ArrayList<>();
         myAdapter = new RestaurantAdapter(this, list_of_restaurants);
         rec_view.setAdapter(myAdapter);
 

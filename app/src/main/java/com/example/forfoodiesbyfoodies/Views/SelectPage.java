@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.forfoodiesbyfoodies.AdapterStreetFood.StreetFoodList;
 import com.example.forfoodiesbyfoodies.Adapters.RestaurantsList;
+import com.example.forfoodiesbyfoodies.Forum.AddTopic;
+import com.example.forfoodiesbyfoodies.Forum.ForumList;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.Street_food;
 import com.example.forfoodiesbyfoodies.Utils;
@@ -73,9 +75,11 @@ public class SelectPage extends AppCompatActivity implements View.OnClickListene
                 startActivity(i);
                 break;
             case R.id.textView8:
-                FirebaseAuth.getInstance().signOut();
+                //FirebaseAuth.getInstance().signOut();
+
+                startActivity(new Intent(SelectPage.this, ForumList.class));
                 //need to create this forum class, layout and functionalities
-                //startActivity(new Intent(SelectPage.this, Forum.class));
+                //startActivity(new Intent(SelectPage.this, ForumList.class));
                 break;
         }
     }

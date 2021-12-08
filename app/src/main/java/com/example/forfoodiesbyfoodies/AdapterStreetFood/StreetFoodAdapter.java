@@ -111,14 +111,17 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.Vi
                     it.putExtra("Rating", object.getStars());
                     it.putExtra("Type", object.getFood_type());
                     it.putExtra("URL_OPENTABLE", object.getUrl_opentable());
-                    it.putExtra("id", object.getId());*/
 
+                    it.putExtra("id", object.getId());*/
                     //working with parcelable or serializable
+
+
                     it.putExtra("title", object.getName());
                     it.putExtra("location", object.getLocation());
                     it.putExtra("photo", object.getImage());
                     it.putExtra("description", object.getDescription());
                     it.putExtra("type", object.getType());
+                    it.putExtra("id", object.getId());
                     v.getContext().startActivity(it);
 
 

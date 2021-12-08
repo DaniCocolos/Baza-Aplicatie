@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForFoodiesByFoodies">
         <activity
+            android:name=".Forum.AnwersForumList"
+            android:exported="false" />
+        <activity
+            android:name=".Forum.AddTopic"
+            android:exported="false" />
+        <activity
+            android:name=".Forum.ForumList"
+            android:exported="false" />
+        <activity
             android:name=".Models.View_Users"
             android:exported="false" />
         <activity

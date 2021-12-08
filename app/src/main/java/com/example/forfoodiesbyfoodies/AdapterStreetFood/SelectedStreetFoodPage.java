@@ -18,8 +18,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.forfoodiesbyfoodies.Adapters.RestaurantsList;
+import com.example.forfoodiesbyfoodies.Adapters.SelectedRestaurantPage;
 import com.example.forfoodiesbyfoodies.Models.UserPage;
 import com.example.forfoodiesbyfoodies.R;
+import com.example.forfoodiesbyfoodies.Reviews.ReviewsList;
+import com.example.forfoodiesbyfoodies.Reviews.add_review;
 import com.example.forfoodiesbyfoodies.StreetFoodAdd.add_street_food;
 import com.example.forfoodiesbyfoodies.Views.Login;
 import com.google.firebase.auth.FirebaseAuth;
@@ -72,7 +75,17 @@ public class SelectedStreetFoodPage extends AppCompatActivity implements View.On
         button_view_reviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO intent
+                Intent getIntent = getIntent();
+                String p1 = getIntent.getStringExtra("URL");
+                String id = getIntent.getStringExtra("id");
+                String stars = getIntent.getStringExtra("Rating");
+                String critic_username = getIntent.getStringExtra("username");
+                Intent in = new Intent(SelectedStreetFoodPage.this, ReviewsList.class);
+                in.putExtra("id", id); //restaurant id
+                in.putExtra("url_image", p1);// restaurant image url
+                in.putExtra("current_rating", stars);
+
+                startActivity(in);
             }
         });
         button_add_reviews = findViewById(R.id.srp_restaurant_add_review);
@@ -80,7 +93,15 @@ public class SelectedStreetFoodPage extends AppCompatActivity implements View.On
         button_add_reviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO intent extra
+                Intent get = getIntent();
+                String idrest = get.getStringExtra("id");
+                Intent review = new Intent(SelectedStreetFoodPage.this, add_review.class);
+                review.putExtra("id_restaurant", idrest);
+                review.putExtra("current_rating", "5");
+                String current_rating = it.getStringExtra("current_rating");
+                String location = it.getStringExtra("location_dbref");
+                review.putExtra("location_dbref", "StreetFood");
+                startActivity(review);
             }
         });
 

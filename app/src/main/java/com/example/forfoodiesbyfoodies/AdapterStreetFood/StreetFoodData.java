@@ -7,17 +7,18 @@ public class StreetFoodData {
     private String image;
     private String type;
     private String description;
-
+    private String id;
     private String userid;
 
 
-    public StreetFoodData(String name, String location, String image, String type, String description,  String userid) {
+    public StreetFoodData(String name, String location, String image, String type, String description,  String userid, String id) {
         this.name = name;
         this.location = location;
         this.image = image;
         this.type = type;
         this.description = description;
         this.userid = userid;
+        this.id= id;
     }
     public StreetFoodData(){}
 
@@ -69,5 +70,14 @@ public class StreetFoodData {
 
     public void setUserid(String userid) {
         this.userid = userid;
+    }
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

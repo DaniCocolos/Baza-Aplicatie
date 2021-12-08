@@ -8,14 +8,15 @@ public class add_street_food_object {
     private String description;
     private String url;
     private String userid;
-
-    public add_street_food_object(String name, String location, String image, String type, String description,  String userid) {
+    private String id;
+    public add_street_food_object(String name, String location, String image, String type, String description,  String userid, String id) {
         this.name = name;
         this.location = location;
         this.image = image;
         this.type = type;
         this.description = description;
         this.userid= userid;
+        this.id = id;
 
     }
     //empty constructor
