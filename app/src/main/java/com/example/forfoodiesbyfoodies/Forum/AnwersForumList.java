@@ -50,7 +50,7 @@ public class AnwersForumList extends AppCompatActivity {
         setContentView(R.layout.activity_anwers_forum_list);
 
         Intent get = getIntent();
-        //TODO need to get THE TOPIC ID FROM THE PAST RECYCLER
+
         String ref_for_db = get.getStringExtra("ref_for_db");
 
         String title = get.getStringExtra("title");
@@ -114,7 +114,13 @@ public class AnwersForumList extends AppCompatActivity {
                                     if (task.isSuccessful())
                                     {
                                         Toast.makeText(AnwersForumList.this, "Succesfully added a comment to this topic!", Toast.LENGTH_LONG).show();
+                                        finish();
+                                        startActivity(getIntent());
 
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(AnwersForumList.this,"There was an error while talking with the database, please try again later, we are busy!  " + task.getException().toString() ,Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
