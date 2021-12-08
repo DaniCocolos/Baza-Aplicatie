@@ -68,8 +68,21 @@ public class SelectedStreetFoodPage extends AppCompatActivity implements View.On
         button_getdirectons.setOnClickListener(this);
         menu.setOnClickListener(this);
 
+        button_view_reviews = findViewById(R.id.srp_restaurant_reviews);
+        button_view_reviews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO intent
+            }
+        });
+        button_add_reviews = findViewById(R.id.srp_restaurant_add_review);
 
-
+        button_add_reviews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO intent extra
+            }
+        });
 
 
 

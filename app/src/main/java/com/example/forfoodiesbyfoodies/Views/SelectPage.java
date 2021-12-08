@@ -18,6 +18,7 @@ import com.example.forfoodiesbyfoodies.AdapterStreetFood.StreetFoodList;
 import com.example.forfoodiesbyfoodies.Adapters.RestaurantsList;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.Street_food;
+import com.example.forfoodiesbyfoodies.Utils;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SelectPage extends AppCompatActivity implements View.OnClickListener, FirebaseAuth.AuthStateListener {
@@ -34,6 +35,7 @@ public class SelectPage extends AppCompatActivity implements View.OnClickListene
         //Listener implemented in View.OnClickListener
         home_restaurant_photo.setOnClickListener(this);
         home_streefood_photo.setOnClickListener(this);
+
 
 
         //---------------------Please visit our forum--------------------------------

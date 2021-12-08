@@ -150,8 +150,12 @@ public class SelectedRestaurantPage extends AppCompatActivity implements View.On
                 startActivity(in);
                 break;
             case R.id.srp_restaurant_reviews:
-                startActivity(new Intent(SelectedRestaurantPage.this, ReviewsList.class));
-
+                //startActivity(new Intent(SelectedRestaurantPage.this, ReviewsList.class));
+                Intent get = getIntent();
+                String idrest = get.getStringExtra("id");
+                Intent review = new Intent(SelectedRestaurantPage.this, ReviewsList.class);
+                review.putExtra("id", idrest);
+                startActivity(review);
              /*   a.putExtra("url", url);
                 a.putExtra("desc", desc);
                 a.putExtra("name", na);*/

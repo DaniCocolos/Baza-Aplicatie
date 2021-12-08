@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextPaint;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.forfoodiesbyfoodies.AdapterStreetFood.StreetFoodList;
 import com.example.forfoodiesbyfoodies.Adapters.RestaurantsList;
+import com.example.forfoodiesbyfoodies.Models.User;
 import com.example.forfoodiesbyfoodies.Models.UserPage;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.StreetFoodAdd.add_street_food;
@@ -30,8 +32,11 @@ import com.example.forfoodiesbyfoodies.Views.Login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -41,7 +46,7 @@ public class add_review extends AppCompatActivity {
     ImageView rest_pics,menu;
     EditText review_text;
     Button button;
-    DatabaseReference dbref,dbref_restaurant;
+    DatabaseReference dbref,dbref_restaurant,dbref2;
     FirebaseAuth mAuth;
     RatingBar stars;
     Boolean starsSelected = false;
@@ -115,38 +120,70 @@ public class add_review extends AppCompatActivity {
                         float s = stars.getRating();
                         float s1 = (c + s)/2;
                         String rate = String.valueOf(Math.round(s1));
+                        String up = "0";
+                        String down = "0";
 
-                        ReviewsData obj = new ReviewsData(critic_user_ID, review_text.getText().toString(), String.valueOf(stars.getRating()));
+                        //String sc = FirebaseDatabase.getInstance().getReference("_users_").child(critic_user_ID).getKey(); //return just firstname not the actual firstname
+                        dbref2 = FirebaseDatabase.getInstance().getReference("_users_");
+                        dbref2.child(critic_user_ID).child("username").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String name = (String) snapshot.getValue();
+                                Log.d("name", "user " + name);
+                                //String down,String up, String review_text,String critic_name, String stars
+                                String desc = review_text.getText().toString();
+                                String star = String.valueOf(stars.getRating());
+                                ReviewsData obj = new ReviewsData(down, up ,desc, name, star);
+                                obj.setCritic_name(name);
 
-
-                        dbref.child(id_restaurant).setValue(obj).addOnCompleteListener(
-                                new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful())
-                                        {
-                                            //Toast.makeText(add_review.this, "You have succesfully addded your review!", Toast.LENGTH_LONG).show();
-                                            //setting the new rating to the restaurant
-                                            dbref_restaurant.child(id_restaurant).child("stars").setValue(rate).addOnCompleteListener(
-                                                    new OnCompleteListener<Void>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            if (task.isSuccessful())
-                                                            {
-                                                                Toast.makeText(add_review.this, "You have succesfully addded your review!", Toast.LENGTH_LONG).show();
-                                                                onBackPressed();
+                                dbref.child(id_restaurant).child(dbref.push().getKey()).setValue(obj).addOnCompleteListener(
+                                        new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful())
+                                                {
+                                                    //Toast.makeText(add_review.this, "You have succesfully addded your review!", Toast.LENGTH_LONG).show();
+                                                    //setting the new rating to the restaurant
+                                                    dbref_restaurant.child(id_restaurant).child("stars").setValue(rate).addOnCompleteListener(
+                                                            new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    if (task.isSuccessful())
+                                                                    {
+                                                                        Toast.makeText(add_review.this, "You have succesfully addded your review!", Toast.LENGTH_LONG).show();
+                                                                        finish();//TODO modificat onBackPress() cu finish()
+                                                                    }
+                                                                }
                                                             }
-                                                        }
-                                                    }
-                                            );
+                                                    );
 
-                                        }else
-                                        {
-                                            Toast.makeText(add_review.this, "There was an error  -> " + Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
+                                                }else
+                                                {
+                                                    Toast.makeText(add_review.this, "There was an error  -> " + Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
                                         }
-                                    }
-                                }
-                        );
+                                );
+
+
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
+
+
+
+
+
+
+
                     }
 
         }

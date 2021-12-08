@@ -19,14 +19,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.forfoodiesbyfoodies.Adapters.SelectedRestaurantPage;
+import com.example.forfoodiesbyfoodies.Models.User;
 import com.example.forfoodiesbyfoodies.Models.UserPage;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.StreetFoodAdd.add_street_food;
+import com.example.forfoodiesbyfoodies.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 //this class has an interface which allow the user to enter an email and password to ->
 //  -> login in order to get access to the application
@@ -140,11 +146,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(Login.this, "You will be redirected to home page", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "You will be redirected to select/home page", Toast.LENGTH_SHORT).show();
+
                     // redirect to user profile or another page
                     startActivity(new Intent(Login.this, SelectPage.class));
-                }//TODO aici sunt pentru a afisa eroare daca email exista in baza noastra de date
-                else {
+
+                }
+                else { // print error from dbs
                     Toast.makeText(Login.this, "Email / password incorrect, please try again: " + task.getException(), Toast.LENGTH_SHORT).show();
                     //progressbar_login.setVisibility(View.GONE);
                 }

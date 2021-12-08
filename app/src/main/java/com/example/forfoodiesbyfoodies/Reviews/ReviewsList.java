@@ -53,8 +53,15 @@ public class ReviewsList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviews);
         //bandit initialization
-
+        //TODO AICI
+        Intent i = getIntent();
+        String secondlocation = i.getStringExtra("id");
+        ///String location = "reviews";
+        //String fulllocation = secondlocation;
+       // Log.d("REF", "ref-> " + secondlocation + " -" + location);//ii bun
         dbref = FirebaseDatabase.getInstance().getReference("reviews");
+
+        //TODO PANA AICI
 
         et_Title = findViewById(R.id.et_Title);
         et_Description = findViewById(R.id.et_Description);
@@ -98,7 +105,7 @@ public class ReviewsList extends AppCompatActivity {
         dbref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.child(secondlocation).getChildren()){
 
                     ReviewsData obj = dataSnapshot.getValue(ReviewsData.class);
 

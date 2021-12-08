@@ -36,6 +36,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.Viewhold
     ArrayList<ReviewsData> list_of_reviews;
 
 
+
     public ReviewsAdapter( Context context, ArrayList<ReviewsData> list_of_reviews) {
         this.list_of_reviews = list_of_reviews;
     }
@@ -56,8 +57,15 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.Viewhold
         ;
 
         ReviewsData obj = list_of_reviews.get(i);
-        viewholder.textView10.setText("0");//up
-        viewholder.textView11.setText("0");//down
+        viewholder.textView10.setText(obj.getUp());//up
+        viewholder.textView11.setText(obj.getDown());//down
+       /* viewholder.textView11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //int c = Integer.parseInt(viewholder.textView11.getText().toString());
+                viewholder.textView11.setText("2231");
+            }
+        });*/
         viewholder.et_Description.setText(obj.getReview_text());
 
 
@@ -79,6 +87,9 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.Viewhold
         TextView textView11; // up
         TextView textView12;  //critic username
         ImageView imageButton, imageButton2;
+        Integer down = 0;
+        Integer up = 0;
+
 
 
         public Viewholder(@NonNull View itemView) {
@@ -89,33 +100,24 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.Viewhold
             textView10 = itemView.findViewById(R.id.textView10); //up number
             textView11 = itemView.findViewById(R.id.textView11);//down number
             //textView12 = itemView.findViewById(R.id.textView12);//critic username
-            imageButton2 = itemView.findViewById(R.id.imageButton2);
+            imageButton2 = itemView.findViewById(R.id.imageButton2);//up button
             imageButton = itemView.findViewById(R.id.imageButton);
+            imageButton.setClickable(true);
+            imageButton2.setClickable(true);
 
-
-            //further improvements
-            imageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "This feature will be implemented in future", Toast.LENGTH_SHORT).show();
-                }
-            });
+            //TODO still, the button thumbs up and down are working but just on app, is not saving in the database:(
             imageButton2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "This feature will be implemented in future", Toast.LENGTH_SHORT).show();
+                   String name =  object.getCritic_name();
+
+                    textView10.setText(new StringBuilder().append("").append(++down));
                 }
             });
-            textView10.setOnClickListener(new View.OnClickListener() {
+            imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "This feature will be implemented in future", Toast.LENGTH_SHORT).show();
-                }
-            });
-            textView11.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "This feature will be implemented in future", Toast.LENGTH_SHORT).show();
+                    textView11.setText(new StringBuilder().append("").append(++up));
                 }
             });
             //--------------------------------------------------------------------------------------
